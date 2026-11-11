@@ -18,8 +18,9 @@ function createChatHandler({env=process.env,tutor=createTutor(),now=Date.now}={}
   const history=Array.isArray(value.history)?value.history.slice(-6).filter(m=>m&&['user','assistant'].includes(m.role)&&typeof m.content==='string').map(m=>({role:m.role,content:m.content.slice(0,1800)})):[];
   const learner={};for(const k of ['goal','experience','diagnosis'])if(typeof value.learner?.[k]==='string')learner[k]=value.learner[k].slice(0,350);
   const current=attempts.get(ip)||bucket; if(current.count>=6||daily>=200||inflight>=2)return json(res,429,{error:'Достигнут лимит запросов. Попробуй позже.'}); current.count++;attempts.set(ip,current);daily++;inflight++;
-  try{return json(res,200,await tutor({question,language,history,learner}))}catch(e){console.error('Tutor request failed:',/^GIGACHAT_|^KNOWLEDGE_/.test(e.message)?e.message:'UPSTREAM_CONNECTION_ERROR');return json(res,502,{error:'Помощник временно не отвечает. Твой вопрос сохранён — попробуй ещё раз.'})}finally{inflight--}
+  try{return json(res,200,await tutor({question,language,history,learner}))}catch(e){console.error('Tutor request failed:',/^GIGACHAT_|^KNOWLEDGE_/.test(e.message)?e.message:'UPSTREAM_CONNECTION_ERROR:'+String(e.cause?.code||e.code||e.name).replace(/[^A-Z_a-z0-9]/g,''));return json(res,502,{error:'Помощник временно не отвечает. Твой вопрос сохранён — попробуй ещё раз.'})}finally{inflight--}
  };
 }
 module.exports={createChatHandler};
+
 
