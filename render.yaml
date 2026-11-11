@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bora-portugues-pilot
+    runtime: node
+    plan: free
+    buildCommand: node --check server.cjs && node check.cjs
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24.18.0

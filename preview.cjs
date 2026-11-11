@@ -1,0 +1,4 @@
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'dist');
+const routes={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
+http.createServer((req,res)=>{const file=routes[new URL(req.url,'http://localhost').pathname];if(!file||req.method!=='GET'){res.writeHead(404);return res.end()}fs.readFile(path.join(root,file),(err,body)=>{if(err){res.writeHead(500);return res.end()}res.writeHead(200,{'Content-Type':file.endsWith('.js')?'text/javascript; charset=utf-8':file.endsWith('.css')?'text/css; charset=utf-8':file.endsWith('.jpg')?'image/jpeg':'text/html; charset=utf-8'});res.end(body)})}).listen(8041,'127.0.0.1',()=>console.log('Bora: http://127.0.0.1:8041'));

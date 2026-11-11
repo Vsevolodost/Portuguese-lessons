@@ -1,0 +1,7 @@
+{
+  "name": "bora-portugues-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {"node": ">=22"},
+  "scripts": {"start": "node server.cjs", "test": "node check.cjs && node --test server.test.cjs"}
+}
