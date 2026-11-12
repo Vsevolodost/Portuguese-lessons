@@ -4,7 +4,7 @@
 
 ## Аккаунты и база
 
-Отдельный Supabase-проект Bora Portuguese: nsvnptuxnmutwvmuczjm (Ireland). Email/password — Supabase Auth с подтверждением email и восстановлением пароля. Для писем внешним ученикам нужен настроенный SMTP: встроенная почта Supabase ограничена участниками команды проекта.
+Отдельный Supabase-проект Bora Portuguese: nsvnptuxnmutwvmuczjm (Ireland). Email/password — Supabase Auth. Для личного пилота пользователь разрешил регистрацию без подтверждения email. Восстановление по почте выключено в интерфейсе до подключения SMTP; пароль нужно сохранять. После настройки SMTP необходимо включить подтверждение email в Supabase и emailConfirmationRequired в supabase-public.json. Встроенная почта Supabase ограничена участниками команды проекта.
 
 Таблица public.bora_progress: user_id (FK auth.users), state JSONB (профиль, диагностика, ответы, шаги уроков, заметки и история), revision, updated_at. RLS разрешает операции только владельцу. Обновление проверяет revision, триггер увеличивает её: конфликт устройств не приводит к тихой перезаписи. Миграция: supabase/migrations/202611120001_bora_progress.sql. Применена через SQL Editor нового проекта. Проверка supabase/rls-test.sql создаёт временные тестовые данные и откатывает их.
 

@@ -1,4 +1,5 @@
 {
- "supabaseUrl": "https://nsvnptuxnmutwvmuczjm.supabase.co",
- "supabaseKey": "sb_publishable_RvZxliGIORuLRqFrrxdCsQ_7E-UZIa2"
+  "supabaseUrl": "https://nsvnptuxnmutwvmuczjm.supabase.co",
+  "supabaseKey": "sb_publishable_RvZxliGIORuLRqFrrxdCsQ_7E-UZIa2",
+  "emailConfirmationRequired": false
 }
