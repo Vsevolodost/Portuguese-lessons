@@ -1,3 +1,4 @@
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');let lessons;
 function getLesson(id){if(!lessons){const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync(path.join(__dirname,'dist/courses-data.js'),'utf8'),ctx);lessons=ctx.window.BoraCourses[0].lessons}const l=lessons.find(l=>l.id===id);return l?{id:l.id,title:l.title,idea:l.idea,examples:l.examples,mission:l.mission}:null}
-module.exports={getLesson};
+function getPracticeExample(question,preferred){getLesson('oi');const words=new Set((question.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-z]+/g)||[]).filter(w=>w.length>1&&!['eu','de','da','do','em','um','uma'].includes(w)));let best=preferred.examples[0],score=0;for(const l of lessons)for(const e of l.examples){const tokens=e[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-z]+/g)||[];const n=tokens.filter(t=>words.has(t)).length;if(n>score){score=n;best=e}}return best}
+module.exports={getLesson,getPracticeExample};

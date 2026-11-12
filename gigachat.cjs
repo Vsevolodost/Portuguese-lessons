@@ -9,7 +9,7 @@ function createGigaClient({fetchImpl=require('./giga-transport.cjs').gigaFetch,e
   })();try{return await pending}finally{pending=null}
  }
  async function complete(messages,maxTokens=700){for(let attempt=0;attempt<2;attempt++){
-  const bearer=await accessToken(),r=await fetchImpl('https://api.giga.chat/v1/chat/completions',{method:'POST',headers:{Authorization:`Bearer ${bearer}`,'Content-Type':'application/json'},body:JSON.stringify({model:env.GIGACHAT_MODEL||'GigaChat-2',messages,temperature:0.25,max_tokens:maxTokens}),signal:AbortSignal.timeout(45000)});
+  const bearer=await accessToken(),r=await fetchImpl('https://api.giga.chat/v1/chat/completions',{method:'POST',headers:{Authorization:`Bearer ${bearer}`,'Content-Type':'application/json'},body:JSON.stringify({model:env.GIGACHAT_MODEL||'GigaChat-3-Ultra',messages,temperature:0.25,max_tokens:maxTokens}),signal:AbortSignal.timeout(45000)});
   if(r.status===401&&attempt===0){token=null;continue}if(!r.ok)throw Error(`GIGACHAT_REQUEST_${r.status}`);const v=await r.json(),answer=v.choices?.[0]?.message?.content;if(typeof answer!=='string'||!answer.trim())throw Error('GIGACHAT_EMPTY_RESPONSE');return answer.trim();
  }throw Error('GIGACHAT_AUTH_FAILED')}
  return {complete};
