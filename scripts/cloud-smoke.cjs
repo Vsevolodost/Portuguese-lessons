@@ -1,0 +1,15 @@
+const {createClient}=require('@supabase/supabase-js'),fs=require('fs'),{randomBytes}=require('crypto');
+const config=JSON.parse(fs.readFileSync('supabase-public.json','utf8').replace(/^\uFEFF/,''));
+const make=()=>createClient(config.supabaseUrl,config.supabaseKey,{auth:{persistSession:false,autoRefreshToken:false}});
+(async()=>{const tag=Date.now(),password=randomBytes(24).toString('hex'),email=`bora-smoke-${tag}@example.invalid`,a=make(),b=make();
+const signup=await a.auth.signUp({email,password});if(signup.error)throw signup.error;if(!signup.data.session)throw Error('Expected signup session without confirmation');const uid=signup.data.user.id;
+const state={name:'Проверка сохранения',goal:'Общение с бразильцами',minutes:'15',experience:'С нуля',onboarded:true,diagnosis:null,attempts:[],completed:false,draft:'',courseProgress:{'pt/oi':{stage:1,answers:{},attempts:0,correct:0,note:'',done:false}}};
+let r=await a.from('bora_progress').insert({user_id:uid,state}).select('revision').single();if(r.error)throw r.error;
+await a.auth.signOut();const login=await a.auth.signInWithPassword({email,password});if(login.error)throw login.error;
+r=await a.from('bora_progress').select('state,revision').eq('user_id',uid).single();if(r.error)throw r.error;if(r.data.state.courseProgress['pt/oi'].stage!==1)throw Error('Progress did not survive login');
+const signupB=await b.auth.signUp({email:`bora-isolation-${tag}@example.invalid`,password:randomBytes(24).toString('hex')});if(signupB.error)throw signupB.error;
+const foreign=await b.from('bora_progress').select('user_id').eq('user_id',uid);if(foreign.error)throw foreign.error;if(foreign.data.length)throw Error('Cross-account leak');
+const overwrite=await b.from('bora_progress').update({state:{name:'Wrong'}}).eq('user_id',uid).select('user_id');if(overwrite.error)throw overwrite.error;if(overwrite.data.length)throw Error('Cross-account overwrite');
+fs.writeFileSync('.env.bora-smoke',`BORA_TEST_EMAIL=${email}\nBORA_TEST_PASSWORD=${password}\nBORA_TEST_UID=${uid}\n`);console.log('PASS: signup without email, database save, sign out/in, progress reload, cross-account read/write blocked');
+await a.auth.signOut();await b.auth.signOut();
+})().catch(e=>{console.error(e.code||e.name,e.message);process.exitCode=1});
