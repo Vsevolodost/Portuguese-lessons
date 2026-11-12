@@ -9,7 +9,7 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 240,
-      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json}"
+      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json,dist/courses-data.js}"
     },
     "api/knowledge.js": {
       "includeFiles": "knowledge/chunks.jsonl"
