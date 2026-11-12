@@ -26,3 +26,7 @@ window.BoraCourses=[
 
 // Vary answer positions while preserving the correct option.
 window.BoraCourses.forEach(c=>c.lessons.forEach((l,i)=>l.quiz.forEach((q,j)=>{const n=(i+j)%q[1].length;q[1]=q[1].slice(n).concat(q[1].slice(0,n));q[2]=(q[2]-n+q[1].length)%q[1].length})));
+
+// Additional greetings have original human recordings in the source textbook.
+window.BoraCourses[0].lessons[0].examples.push(["Bom dia!","Доброе утро!"],["Boa tarde!","Добрый день!"],["Boa noite!","Добрый вечер / спокойной ночи!"]);
+window.BoraCourses[0].lessons.find(l=>l.id==="artigos").examples=[["o livro","эта, известная книга"],["um livro","какая-то книга"],["a casa","этот, известный дом"],["uma casa","какой-то дом"],["A casa é bonita.","Дом красивый."]];

@@ -1,0 +1,110 @@
+[
+  {
+    "key": "bom dia",
+    "text": "Bom dia!",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_082_Bom-dia.mp3",
+    "file": "dist/assets/audio/b8e3bc65c7438ad8.mp3"
+  },
+  {
+    "key": "boa tarde",
+    "text": "Boa tarde!",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_083_Boa-tarde.mp3",
+    "file": "dist/assets/audio/699a97b65fb8fa3c.mp3"
+  },
+  {
+    "key": "boa noite",
+    "text": "Boa noite!",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_084_Boa-noite.mp3",
+    "file": "dist/assets/audio/5592c79058292339.mp3"
+  },
+  {
+    "key": "de onde você é",
+    "text": "De onde você é?",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_086_De-onde-você-é-2.mp3",
+    "file": "dist/assets/audio/7c51b0b9a315edea.mp3"
+  },
+  {
+    "key": "um",
+    "text": "um",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_002_Um.mp3",
+    "file": "dist/assets/audio/289c90decf40c8ec.mp3"
+  },
+  {
+    "key": "dois",
+    "text": "dois",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_003_Dois.mp3",
+    "file": "dist/assets/audio/51a2ebe1a8d420ab.mp3"
+  },
+  {
+    "key": "três",
+    "text": "três",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_004_Três.mp3",
+    "file": "dist/assets/audio/9b24146c15fcabd8.mp3"
+  },
+  {
+    "key": "quatro",
+    "text": "quatro",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_005_Quatro.mp3",
+    "file": "dist/assets/audio/d50a50e4611c8267.mp3"
+  },
+  {
+    "key": "cinco",
+    "text": "cinco",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_006_Cinco.mp3",
+    "file": "dist/assets/audio/216e1e3f8fed804b.mp3"
+  },
+  {
+    "key": "seis",
+    "text": "seis",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_007_Seis.mp3",
+    "file": "dist/assets/audio/061b38e441371bac.mp3"
+  },
+  {
+    "key": "sete",
+    "text": "sete",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_008_Sete.mp3",
+    "file": "dist/assets/audio/7e974de45fbf7089.mp3"
+  },
+  {
+    "key": "oito",
+    "text": "oito",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_009_Oito.mp3",
+    "file": "dist/assets/audio/9a6cf3d7477ed4b1.mp3"
+  },
+  {
+    "key": "nove",
+    "text": "nove",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_010_Nove.mp3",
+    "file": "dist/assets/audio/bc12b84bc41cd1e1.mp3"
+  },
+  {
+    "key": "dez",
+    "text": "dez",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_011_Dez.mp3",
+    "file": "dist/assets/audio/d657b8f3feb21306.mp3"
+  },
+  {
+    "key": "amanhã",
+    "text": "amanhã",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_013_Amanhã.mp3",
+    "file": "dist/assets/audio/a626ea2fb20578fd.mp3"
+  },
+  {
+    "key": "onde",
+    "text": "onde",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_077_Onde.mp3",
+    "file": "dist/assets/audio/23f2f997f50293ec.mp3"
+  },
+  {
+    "key": "ser",
+    "text": "ser",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_072_Ser.mp3",
+    "file": "dist/assets/audio/f0e948db590cf453.mp3"
+  },
+  {
+    "key": "estar",
+    "text": "estar",
+    "url": "https://wisc.pb.unizin.org/app/uploads/sites/23/2016/08/L01_069_Estar.mp3",
+    "file": "dist/assets/audio/d58646be575a364b.mp3"
+  }
+]

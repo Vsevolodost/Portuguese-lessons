@@ -3,14 +3,16 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {searchKnowledge}=require('./knowledge.cjs');
 const {createChatHandler}=require('./chat-api.cjs');
+const {serveAudio}=require('./audio-server.cjs');
 const root=path.join(__dirname,'dist');
-const routes={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/assistant.js':'assistant.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
+const routes={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/assistant.js':'assistant.js','/audio.js':'audio.js','/audio-manifest.js':'audio-manifest.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
 function createServer(options={}){const chat=createChatHandler(options);return http.createServer((req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
   let pathname;try{pathname=new URL(req.url,'http://localhost').pathname}catch{res.writeHead(400);return res.end()}
   if(pathname==='/api/chat')return void chat(req,res);
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{Allow:'GET, HEAD'});return res.end()}
+  if(serveAudio(req,res,pathname))return;
   if(pathname==='/api/knowledge'){
     const params=new URL(req.url,'http://localhost').searchParams,query=(params.get('q')||'').trim(),language=params.get('language')||'pt-BR';
     if(!query||query.length>500||!['pt-BR','en'].includes(language)){res.writeHead(400,{'Content-Type':'application/json'});return res.end(JSON.stringify({error:'Use q (1–500 characters) and language pt-BR or en'}))}
