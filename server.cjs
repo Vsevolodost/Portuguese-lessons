@@ -4,7 +4,7 @@ const path=require('node:path');
 const {searchKnowledge}=require('./knowledge.cjs');
 const {createChatHandler}=require('./chat-api.cjs');
 const root=path.join(__dirname,'dist');
-const routes={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/assistant.js':'assistant.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
+const routes={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/assistant.js':'assistant.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
 function createServer(options={}){const chat=createChatHandler(options);return http.createServer((req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
