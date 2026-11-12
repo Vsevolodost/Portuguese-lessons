@@ -16,6 +16,10 @@
     },
     "api/config.js": {
       "includeFiles": "supabase-public.json"
+    },
+    "api/speech.js": {
+      "maxDuration": 90,
+      "includeFiles": "supabase-public.json"
     }
   },
   "rewrites": [

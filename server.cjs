@@ -12,6 +12,7 @@ function createServer(options={}){const chat=createChatHandler({limiter:require(
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
   let pathname;try{pathname=new URL(req.url,'http://localhost').pathname}catch{res.writeHead(400);return res.end()}
   if(pathname==='/api/chat')return void chat(req,res);
+  if(pathname==='/api/speech')return void require('./speech-api.cjs').createSpeechHandler()(req,res);
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{Allow:'GET, HEAD'});return res.end()}
   if(serveAudio(req,res,pathname))return;
   if(pathname==='/api/knowledge'){

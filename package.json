@@ -11,7 +11,8 @@
     "build:auth": "esbuild scripts/supabase-browser.js --bundle --format=iife --minify --outfile=dist/supabase-vendor.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.119.0"
+    "@supabase/supabase-js": "^2.119.0",
+    "node-edge-tts": "1.2.12"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"
