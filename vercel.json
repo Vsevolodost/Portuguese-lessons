@@ -1,0 +1,51 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node check.cjs",
+  "outputDirectory": "dist",
+  "regions": [
+    "dub1"
+  ],
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 240,
+      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json}"
+    },
+    "api/knowledge.js": {
+      "includeFiles": "knowledge/chunks.jsonl"
+    },
+    "api/config.js": {
+      "includeFiles": "supabase-public.json"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/audio/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
+  ]
+}

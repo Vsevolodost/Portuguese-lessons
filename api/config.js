@@ -1,0 +1,1 @@
+module.exports=(req,res)=>{if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);return res.end()}res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','application/json; charset=utf-8');res.end(req.method==='HEAD'?undefined:JSON.stringify(require('../public-config.cjs').publicConfig()))};
