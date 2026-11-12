@@ -1,5 +1,5 @@
 const {randomUUID}=require('node:crypto');
-function createGigaClient({fetchImpl=fetch,env=process.env}={}){
+function createGigaClient({fetchImpl=require('./giga-transport.cjs').gigaFetch,env=process.env}={}){
  let token,expires=0,pending;
  async function accessToken(){
   if(token&&Date.now()<expires-60000)return token;if(pending)return pending;
@@ -15,4 +15,5 @@ function createGigaClient({fetchImpl=fetch,env=process.env}={}){
  return {complete};
 }
 module.exports={createGigaClient};
+
 
