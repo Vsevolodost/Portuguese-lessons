@@ -8,3 +8,5 @@
 .audio-option-row{display:flex;align-items:stretch;gap:8px}.audio-option-row .option{flex:1}.audio-option-row .audio-phrase{flex:0 0 140px}@media(max-width:480px){.audio-option-row{flex-wrap:wrap}.audio-option-row .option{min-width:100%}.audio-option-row .audio-phrase{flex:1}}
 
 .account-nav{display:grid;gap:4px;text-align:right;max-width:260px}.account-nav a{font-size:13px;font-weight:700}#cloud-status{font-size:10px}#auth-feedback{margin-top:18px}.account-nav span:empty{display:none}
+
+[hidden]{display:none!important}
