@@ -20,6 +20,10 @@
     "api/speech.js": {
       "maxDuration": 90,
       "includeFiles": "supabase-public.json"
+    },
+    "api/transcribe.js": {
+      "maxDuration": 90,
+      "includeFiles": "supabase-public.json"
     }
   },
   "rewrites": [

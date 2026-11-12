@@ -6,13 +6,14 @@ const {createChatHandler}=require('./chat-api.cjs');
 const {serveAudio}=require('./audio-server.cjs');
 const defaultPublicConfig=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'supabase-public.json'),'utf8').replace(/^\uFEFF/,''));
 const root=path.join(__dirname,'dist');
-const routes={'/':'index.html','/index.html':'index.html','/account.js':'account.js','/supabase-vendor.js':'supabase-vendor.js','/app.js':'app.js','/assistant.js':'assistant.js','/audio.js':'audio.js','/audio-manifest.js':'audio-manifest.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/placement.js':'placement.js','/practice.js':'practice.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
+const routes={'/':'index.html','/index.html':'index.html','/account.js':'account.js','/supabase-vendor.js':'supabase-vendor.js','/app.js':'app.js','/assistant.js':'assistant.js','/audio.js':'audio.js','/audio-manifest.js':'audio-manifest.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/placement.js':'placement.js','/practice.js':'practice.js','/speech-recorder.js':'speech-recorder.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
 function createServer(options={}){const chat=createChatHandler({limiter:require('./shared-limiter.cjs').createSharedLimiter(),...options});return http.createServer((req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
   let pathname;try{pathname=new URL(req.url,'http://localhost').pathname}catch{res.writeHead(400);return res.end()}
   if(pathname==='/api/chat')return void chat(req,res);
-  if(pathname==='/api/speech')return void require('./speech-api.cjs').createSpeechHandler()(req,res);
+  if(pathname==='/api/transcribe')return void require('./transcribe-api.cjs').createTranscribeHandler({env:options.env||process.env})(req,res);
+  if(pathname==='/api/speech')return void require('./speech-api.cjs').createSpeechHandler({env:options.env||process.env})(req,res);
   if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{Allow:'GET, HEAD'});return res.end()}
   if(serveAudio(req,res,pathname))return;
   if(pathname==='/api/knowledge'){
@@ -20,7 +21,7 @@ function createServer(options={}){const chat=createChatHandler({limiter:require(
     if(!query||query.length>500||!['pt-BR','en'].includes(language)){res.writeHead(400,{'Content-Type':'application/json'});return res.end(JSON.stringify({error:'Use q (1–500 characters) and language pt-BR or en'}))}
     const result=searchKnowledge(query,language);res.writeHead(result.available?200:503,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify(result));
   }
-  if(pathname==='/api/config'){const env=options.env||process.env;res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify({emailConfirmationRequired:defaultPublicConfig.emailConfirmationRequired!==false,supabaseUrl:env.SUPABASE_URL||defaultPublicConfig.supabaseUrl,supabaseKey:(env.SUPABASE_PUBLISHABLE_KEY||defaultPublicConfig.supabaseKey).startsWith('sb_publishable_')?(env.SUPABASE_PUBLISHABLE_KEY||defaultPublicConfig.supabaseKey):''}))}
+  if(pathname==='/api/config'){const env=options.env||process.env;res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify(require('./public-config.cjs').publicConfig(env)))}
   if(pathname==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify({status:'ok',service:'bora'}))}
   const file=routes[pathname];if(!file){res.writeHead(404);return res.end('Not found')}
   fs.readFile(path.join(root,file),(err,body)=>{if(err){res.writeHead(500);return res.end('Unable to load page')}
