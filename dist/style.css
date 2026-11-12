@@ -10,3 +10,5 @@
 .account-nav{display:grid;gap:4px;text-align:right;max-width:260px}.account-nav a{font-size:13px;font-weight:700}#cloud-status{font-size:10px}#auth-feedback{margin-top:18px}.account-nav span:empty{display:none}
 
 [hidden]{display:none!important}
+
+.practice-panel>label{display:block;margin:16px 0}.practice-panel>label>select{display:block;max-width:100%;margin-top:8px}.practice-panel>label>input[type=checkbox]{width:auto;margin-right:8px}.practice-panel>audio{display:block;width:100%;margin:16px 0}.practice-panel #practice-messages{margin-top:24px}
