@@ -6,8 +6,8 @@ const {createChatHandler}=require('./chat-api.cjs');
 const {serveAudio}=require('./audio-server.cjs');
 const defaultPublicConfig=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'supabase-public.json'),'utf8').replace(/^\uFEFF/,''));
 const root=path.join(__dirname,'dist');
-const routes={'/':'index.html','/index.html':'index.html','/account.js':'account.js','/supabase-vendor.js':'supabase-vendor.js','/app.js':'app.js','/assistant.js':'assistant.js','/audio.js':'audio.js','/audio-manifest.js':'audio-manifest.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
-function createServer(options={}){const chat=createChatHandler(options);return http.createServer((req,res)=>{
+const routes={'/':'index.html','/index.html':'index.html','/account.js':'account.js','/supabase-vendor.js':'supabase-vendor.js','/app.js':'app.js','/assistant.js':'assistant.js','/audio.js':'audio.js','/audio-manifest.js':'audio-manifest.js','/courses.js':'courses.js','/courses-data.js':'courses-data.js','/placement.js':'placement.js','/style.css':'style.css','/assets/rio.jpg':'assets/rio.jpg','/assets/city.jpg':'assets/city.jpg'};
+function createServer(options={}){const chat=createChatHandler({limiter:require('./shared-limiter.cjs').createSharedLimiter(),...options});return http.createServer((req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
   let pathname;try{pathname=new URL(req.url,'http://localhost').pathname}catch{res.writeHead(400);return res.end()}

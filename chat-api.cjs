@@ -1,13 +1,10 @@
-const {createHash,timingSafeEqual}=require('node:crypto');
 const {createTutor}=require('./tutor.cjs');
 function createChatHandler({env=process.env,tutor=createTutor(),now=Date.now,limiter=null}={}){
  const attempts=new Map();let day='',daily=0,inflight=0;
  const json=(res,status,value)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value))};
  return async(req,res)=>{
   if(req.method!=='POST')return json(res,405,{error:'Используй POST.'});
-  if(!env.GIGACHAT_AUTH_KEY||!env.BORA_PILOT_CODE)return json(res,503,{error:'Помощник пока не настроен.'});
-  const supplied=String(req.headers['x-pilot-code']||''),digest=x=>createHash('sha256').update(x).digest();
-  if(supplied.length>200||!timingSafeEqual(digest(supplied),digest(env.BORA_PILOT_CODE)))return json(res,401,{error:'Введи код доступа к пилоту.'});
+  if(!env.GIGACHAT_AUTH_KEY)return json(res,503,{error:'Помощник пока не настроен.'});
   if(!String(req.headers['content-type']||'').startsWith('application/json'))return json(res,415,{error:'Ожидается JSON.'});
   const timestamp=now(),today=new Date(timestamp).toISOString().slice(0,10);if(day!==today){day=today;daily=0}
   const ip=String(req.headers['x-forwarded-for']||req.socket?.remoteAddress||'').split(',')[0].trim();for(const [k,v]of attempts)if(timestamp-v.start>60000)attempts.delete(k);const bucket=attempts.get(ip)||{start:timestamp,count:0};

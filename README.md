@@ -16,7 +16,7 @@
 
 Node.js 24. npm ci. Для обновления браузерного SDK: npm run build:auth. Запуск: npm start. Локальные секреты GigaChat — в .env (шаблон .env.example); запуск с ними: node --env-file=.env server.cjs. npm test проверяет маршруты, RAG, лимиты, сохранение состояния, конфликты, задания и аудио. Реальные Auth/email и PostgreSQL проверяются отдельно.
 
-Render: main, Root Directory пустой, Build node --check server.cjs && node check.cjs, Start npm start, health /health. Бесплатный сервер может запускаться после простоя. GigaChat использует серверные GIGACHAT_AUTH_KEY, GIGACHAT_SCOPE, GIGACHAT_MODEL и BORA_PILOT_CODE. Код пилота дополнительно ограничивает расход API помощника.
+Render: main, Root Directory пустой, Build node --check server.cjs && node check.cjs, Start npm start, health /health. Бесплатный сервер может запускаться после простоя. GigaChat использует серверные GIGACHAT_AUTH_KEY, GIGACHAT_SCOPE, GIGACHAT_MODEL. Помощник доступен только после входа; лимиты общие для Render и Vercel.
 
 ## Материалы и аудио
 
@@ -27,6 +27,11 @@ Render: main, Root Directory пустой, Build node --check server.cjs && node
 Ручная проверка реальной базы: `node scripts/cloud-smoke.cjs`. Она создаёт два технических аккаунта с адресами @example.invalid, проверяет регистрацию, сохранение после повторного входа и изоляцию чтения/записи. Эти аккаунты остаются в тестовом проекте; скрипт не удаляет пользователей. Данные входа первого сохраняются только в игнорируемом .env.bora-smoke. Не включать этот сценарий в автоматический запуск CI.
 
 ## Vercel
-Production uses static files from dist and Node API functions from api. Apply supabase/migrations/202611120003_chat_quotas.sql before deployment. Configure GIGACHAT_AUTH_KEY, GIGACHAT_SCOPE and BORA_PILOT_CODE as sensitive server environment variables for production and preview. No service-role key is needed. The chat requires a Supabase session and the pilot code; shared database quotas enforce 6 requests per user per minute, 200 total per UTC day and 2 concurrent requests. Leases expire after 5 minutes if a function stops unexpectedly.
+Production uses static files from dist and Node API functions from api. Apply supabase/migrations/202611120003_chat_quotas.sql before deployment. Configure GIGACHAT_AUTH_KEY and GIGACHAT_SCOPE as sensitive server environment variables for production and preview. No service-role key is needed. The chat requires a Supabase session; shared database quotas enforce 6 requests per user per minute, 200 total per UTC day and 2 concurrent requests. Leases expire after 5 minutes if a function stops unexpectedly.
 Keep the existing Supabase project: users and progress remain available after signing in on the new domain. Add the production URL to Supabase Auth URL configuration. Browser login sessions and the pilot access code are entered again on the new domain. Render remains a backup.
 
+
+## Adaptive start and expanded Portuguese course
+New accounts select Brazilian Portuguese and their learning goal in onboarding, then enter a resumable 4–16 item placement. Four original items per band combine receptive tasks and controlled written production. Promotion needs at least 3/4 including the written item; stop at the first unmet band or the B1 ceiling. This is an uncalibrated low-stakes routing heuristic, not an official CEFR or Celpe-Bras assessment. No speaking/listening level is inferred. Wrong answers link to concrete lessons. Ten past assessments are retained; existing lesson completion is never changed by placement.
+The Portuguese course now contains 30 lessons in 5 modules, with explanations, pitfalls, practice, writing and real-life missions. Existing lesson IDs are stable. Additional audio is explicitly labelled synthetic pt-BR; existing native recordings keep attribution.
+References: https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions and https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/celpe-bras .
