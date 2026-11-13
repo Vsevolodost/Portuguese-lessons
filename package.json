@@ -7,9 +7,10 @@
   },
   "scripts": {
     "start": "node server.cjs",
-    "test": "node check.cjs && node --test server.test.cjs chat.test.cjs courses.test.cjs audio.test.cjs account.test.cjs config.test.cjs vercel.test.cjs placement.test.cjs practice.test.cjs azure-speech.test.cjs live.test.cjs study.test.cjs",
+    "test": "node check.cjs && node --test server.test.cjs chat.test.cjs courses.test.cjs audio.test.cjs account.test.cjs config.test.cjs vercel.test.cjs placement.test.cjs practice.test.cjs azure-speech.test.cjs live.test.cjs study.test.cjs ui.test.cjs",
     "build:auth": "esbuild scripts/supabase-browser.js --bundle --format=iife --minify --outfile=dist/supabase-vendor.js",
-    "build:live": "esbuild scripts/gemini-browser.js --bundle --format=iife --minify --outfile=dist/gemini-vendor.js"
+    "build:live": "esbuild scripts/gemini-browser.js --bundle --format=iife --minify --outfile=dist/gemini-vendor.js",
+    "build:icons": "node scripts/build-icons.cjs"
   },
   "dependencies": {
     "@google/genai": "3.3.0",
@@ -17,6 +18,8 @@
     "node-edge-tts": "1.2.12"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "esbuild": "^0.28.2",
+    "lucide-static": "1.72.0",
+    "sharp": "0.35.5"
   }
 }
