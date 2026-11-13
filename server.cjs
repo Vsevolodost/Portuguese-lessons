@@ -19,7 +19,7 @@ function createServer(options={}){const chat=createChatHandler({limiter:require(
   if(serveAudio(req,res,pathname))return;
   if(pathname==='/api/knowledge'){
     const params=new URL(req.url,'http://localhost').searchParams,query=(params.get('q')||'').trim(),language=params.get('language')||'pt-BR';
-    if(!query||query.length>500||!['pt-BR','en'].includes(language)){res.writeHead(400,{'Content-Type':'application/json'});return res.end(JSON.stringify({error:'Use q (1–500 characters) and language pt-BR or en'}))}
+    if(!query||query.length>500||language!=='pt-BR'){res.writeHead(400,{'Content-Type':'application/json'});return res.end(JSON.stringify({error:'Use q (1–500 characters) and language pt-BR'}))}
     const result=searchKnowledge(query,language);res.writeHead(result.available?200:503,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify(result));
   }
   if(pathname==='/api/config'){const env=options.env||process.env;res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(req.method==='HEAD'?undefined:JSON.stringify(require('./public-config.cjs').publicConfig(env)))}
