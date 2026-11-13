@@ -24,6 +24,10 @@
     "api/transcribe.js": {
       "maxDuration": 90,
       "includeFiles": "supabase-public.json"
+    },
+    "api/live-session.js": {
+      "maxDuration": 60,
+      "includeFiles": "{supabase-public.json,dist/courses-data.js,knowledge/chunks.jsonl}"
     }
   },
   "rewrites": [

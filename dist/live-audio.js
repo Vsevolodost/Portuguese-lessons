@@ -1,0 +1,15 @@
+(()=>{
+function pcmBase64(samples){const bytes=new Uint8Array(samples.length*2),v=new DataView(bytes.buffer);for(let i=0;i<samples.length;i++){const n=Math.max(-1,Math.min(1,samples[i]));v.setInt16(i*2,n<0?n*32768:n*32767,true)}let raw='';for(let i=0;i<bytes.length;i+=8192)raw+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(raw)}
+function decodePcm(data){const raw=atob(data);if(raw.length%2||raw.length>2000000)throw Error('Invalid audio');const bytes=Uint8Array.from(raw,c=>c.charCodeAt(0)),v=new DataView(bytes.buffer),out=new Float32Array(raw.length/2);for(let i=0;i<out.length;i++)out[i]=v.getInt16(i*2,true)/32768;return out}
+function supported(){return !!(window.AudioWorkletNode&&window.AudioContext&&navigator.mediaDevices?.getUserMedia)}
+function create({onChunk}){let inputContext,outputContext,stream,source,worklet,silence,closed=false,muted=false,nextTime=0;const playing=new Set();
+function clearPlayback(){for(const node of playing){try{node.stop()}catch{}}playing.clear();nextTime=outputContext?.currentTime||0}
+const api={
+ async prepare(){outputContext=new window.AudioContext();await outputContext.resume();if(closed){await outputContext.close();return}stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});if(closed){stream.getTracks().forEach(t=>t.stop());return}inputContext=new window.AudioContext({sampleRate:16000});await inputContext.audioWorklet.addModule('/live-mic-worklet.js');if(closed){await inputContext.close();return}await inputContext.resume();source=inputContext.createMediaStreamSource(stream);worklet=new window.AudioWorkletNode(inputContext,'bora-mic');silence=inputContext.createGain();silence.gain.value=0;worklet.port.onmessage=e=>{if(!closed&&!muted)onChunk(pcmBase64(new Float32Array(e.data)),16000)};source.connect(worklet);worklet.connect(silence);silence.connect(inputContext.destination)},
+ play(data,rate){if(closed||!outputContext)return;if(!Number.isFinite(rate)||rate<8000||rate>48000)throw Error('Invalid audio rate');const samples=decodePcm(data);if(!samples.length)return;nextTime=Math.max(nextTime,outputContext.currentTime+0.025);if(nextTime-outputContext.currentTime>45){clearPlayback();throw Error('Audio queue too long')}const buffer=outputContext.createBuffer(1,samples.length,rate);buffer.copyToChannel(samples,0);const node=outputContext.createBufferSource();node.buffer=buffer;node.connect(outputContext.destination);playing.add(node);node.onended=()=>playing.delete(node);node.start(nextTime);nextTime+=buffer.duration},
+ clearPlayback,
+ mute(value){muted=value;stream?.getAudioTracks().forEach(t=>t.enabled=!value)},
+ close(){closed=true;clearPlayback();stream?.getTracks().forEach(t=>t.stop());try{source?.disconnect();worklet?.disconnect();silence?.disconnect()}catch{}if(worklet)worklet.port.onmessage=null;inputContext?.close().catch(()=>{});outputContext?.close().catch(()=>{})}
+};return api}
+window.BoraLiveAudio={supported,create,pcmBase64,decodePcm};
+})();

@@ -1,6 +1,6 @@
 # Bora — бразильский португальский
 
-Сайт пилота: https://bora-portugues-pilot.onrender.com/ . Курсы: 12 уроков pt-BR и 6 уроков английского, русские объяснения, интерактивные задания, 84 записи аудио для португальского и помощник GigaChat с RAG (890 фрагментов).
+Сайт пилота: https://portuguese-lessons.vercel.app/ . Курсы: 30 уроков pt-BR и 6 уроков английского, русские объяснения, интерактивные задания, 187 записей аудио для португальского и помощник GigaChat с RAG (920 фрагментов).
 
 ## Аккаунты и база
 
@@ -14,21 +14,21 @@
 
 ## Запуск и проверки
 
-Node.js 24. npm ci. Для обновления браузерного SDK: npm run build:auth. Запуск: npm start. Локальные секреты GigaChat — в .env (шаблон .env.example); запуск с ними: node --env-file=.env server.cjs. npm test проверяет маршруты, RAG, лимиты, сохранение состояния, конфликты, задания и аудио. Реальные Auth/email и PostgreSQL проверяются отдельно.
+Node.js 24. npm ci. Для обновления браузерных SDK: npm run build:auth и npm run build:live. Запуск: npm start. Локальные секреты GigaChat — в .env (шаблон .env.example); запуск с ними: node --env-file=.env server.cjs. npm test проверяет маршруты, RAG, лимиты, сохранение состояния, конфликты, задания и аудио. Реальные Auth/email и PostgreSQL проверяются отдельно.
 
-Render: main, Root Directory пустой, Build node --check server.cjs && node check.cjs, Start npm start, health /health. Бесплатный сервер может запускаться после простоя. GigaChat использует серверные GIGACHAT_AUTH_KEY, GIGACHAT_SCOPE, GIGACHAT_MODEL. Помощник доступен только после входа; лимиты общие для Render и Vercel.
+Хостинг — только Vercel. server.cjs используется для локального запуска. GigaChat использует серверные GIGACHAT_AUTH_KEY, GIGACHAT_SCOPE, GIGACHAT_MODEL. Помощник доступен только после входа; общие лимиты хранятся в Supabase.
 
 ## Материалы и аудио
 
 Русский курс — сокращённая адаптация выбранных тем Português para principiantes (UW–Madison), CC BY-NC-SA 4.0; английский — A Digital Workbook for Beginning ESOL (Eric Dodson, Davida Jordan, Timothy Krause), CC BY 4.0. Ссылки и условия в уроках и knowledge/README.md. Исходные авторы адаптацию не проверяли. Перед платным запуском необходимо исключить или отдельно лицензировать NC-материалы. Учебный прогресс не является оценкой CEFR или сертификатом Celpe-Bras.
 
-Аудио pt-BR: 15 живых записей UW–Madison по CC BY-NC-SA 4.0 и 69 синтезированных записей Microsoft Francisca с отдельными пометками. Точный текст и происхождение — dist/audio-manifest.js. Плеер поддерживает повтор и 0,8×. Генерация заранее: prepare-audio.cjs, инструменты npm ci --prefix audio-tools. Во время урока синтез не вызывается. Список для будущей живой озвучки: audio-recording-list.json. Фото предоставлены пользователем; права отдельно не проверены.
+Аудио pt-BR: 15 живых записей UW–Madison по CC BY-NC-SA 4.0 и 172 синтезированных записей Microsoft Francisca с отдельными пометками. Точный текст и происхождение — dist/audio-manifest.js. Плеер поддерживает повтор и 0,8×. Генерация заранее: prepare-audio.cjs, инструменты npm ci --prefix audio-tools. Во время урока синтез не вызывается. Список для будущей живой озвучки: audio-recording-list.json. Фото предоставлены пользователем; права отдельно не проверены.
 
 Ручная проверка реальной базы: `node scripts/cloud-smoke.cjs`. Она создаёт два технических аккаунта с адресами @example.invalid, проверяет регистрацию, сохранение после повторного входа и изоляцию чтения/записи. Эти аккаунты остаются в тестовом проекте; скрипт не удаляет пользователей. Данные входа первого сохраняются только в игнорируемом .env.bora-smoke. Не включать этот сценарий в автоматический запуск CI.
 
 ## Vercel
 Production uses static files from dist and Node API functions from api. Apply supabase/migrations/202611120003_chat_quotas.sql before deployment. Configure GIGACHAT_AUTH_KEY and GIGACHAT_SCOPE as sensitive server environment variables for production and preview. No service-role key is needed. The chat requires a Supabase session; shared database quotas enforce 6 requests per user per minute, 200 total per UTC day and 2 concurrent requests. Leases expire after 5 minutes if a function stops unexpectedly.
-Keep the existing Supabase project: users and progress remain available after signing in on the new domain. Add the production URL to Supabase Auth URL configuration. Browser login sessions and the pilot access code are entered again on the new domain. Render remains a backup.
+Keep the existing Supabase project: users and progress remain available after signing in on the new domain. Add the production URL to Supabase Auth URL configuration. Browser login sessions must be established again on the new domain. No pilot access code is required.
 
 
 ## Adaptive start and expanded Portuguese course
@@ -47,3 +47,6 @@ References: https://www.coe.int/en/web/common-european-framework-reference-langu
 
 ## Официальный Azure Speech
 Подготовлены TTS и STT через сервер, без передачи ключей или сервисных токенов в браузер. Активация: AZURE_SPEECH_KEY + AZURE_SPEECH_REGION, затем redeploy. До предоставления ключа работает прежний режим; настоящий Azure ещё не проверен. Инструкция: [AZURE_SETUP.md](AZURE_SETUP.md).
+
+## Gemini Live — подготовлен, пока выключен
+Живой разговор с микрофоном, перебиванием и сохранением текстовой расшифровки подготовлен отдельно от практики GigaChat. Без ключа и выбранной доступной Live-модели режим скрыт. Реальный разговор с Google пока не проверен. Настройка и ограничения: [GEMINI_LIVE_SETUP.md](GEMINI_LIVE_SETUP.md).
