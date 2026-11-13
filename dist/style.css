@@ -14,3 +14,4 @@
 .practice-panel>label{display:block;margin:16px 0}.practice-panel>label>select{display:block;max-width:100%;margin-top:8px}.practice-panel>label>input[type=checkbox]{width:auto;margin-right:8px}.practice-panel>audio{display:block;width:100%;margin:16px 0}.practice-panel #practice-messages{margin-top:24px}
 
 .live-consent{display:block;margin:20px 0}.live-consent input{width:auto;margin-right:8px}
+.study-dashboard{margin-top:24px}.note-feedback{white-space:pre-wrap;margin-top:20px;line-height:1.8}.note-feedback:empty{display:none}
