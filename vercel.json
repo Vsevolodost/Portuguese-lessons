@@ -9,7 +9,7 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 240,
-      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json,dist/courses-data.js}"
+      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json,dist/courses-data.js,dist/exam-data.js}"
     },
     "api/knowledge.js": {
       "includeFiles": "knowledge/chunks.jsonl"
@@ -28,6 +28,10 @@
     "api/live-session.js": {
       "maxDuration": 60,
       "includeFiles": "{supabase-public.json,dist/courses-data.js,knowledge/chunks.jsonl}"
+    },
+    "api/exam-feedback.js": {
+      "maxDuration": 120,
+      "includeFiles": "{supabase-public.json,dist/exam-data.js,certs/russian-trusted-root.pem}"
     }
   },
   "rewrites": [
