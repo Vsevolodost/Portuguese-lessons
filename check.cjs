@@ -5,11 +5,11 @@ context=vm.createContext({console,URL,Date,JSON,Number,String,Math,FormData,aler
 vm.runInContext(fs.readFileSync('dist/placement.js','utf8'),context);
 vm.runInContext(fs.readFileSync('dist/app.js','utf8'),context);
 const run=s=>vm.runInContext(s,context);
-assert.match(element('#app').innerHTML,/Программа обучения/);
+assert.match(element('#app').innerHTML,/Давай познакомимся/);
 run("Object.assign(user(),{name:'Ана',onboarded:true});save();location.hash='#lesson';render()");
 assert.match(element('#app').innerHTML,/Первое «привет»/);
 run("user().attempts.push({step:0,correct:true,at:new Date().toISOString()});user().completed=true;save();active='two';location.hash='#progress';render()");
-assert.match(element('#app').innerHTML,/Программа обучения/);run("user().onboarded=true;render()");assert.match(element('#app').innerHTML,/Диагностика ещё не пройдена/);
+assert.match(element('#app').innerHTML,/Давай познакомимся/);run("user().onboarded=true;render()");assert.match(element('#app').innerHTML,/Диагностика ещё не пройдена/);
 assert.equal(run('user().attempts.length'),0);
 run("active='one'");assert.equal(run('user().attempts.length'),1);assert.equal(queued.completed,true);assert.equal(storage['bora.pilot.v1'],undefined);
 run("user().name='<script>alert(1)</script>';location.hash='#home';render()");assert.ok(!element('#app').innerHTML.includes('<script>alert'));
