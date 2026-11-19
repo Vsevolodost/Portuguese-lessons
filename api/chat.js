@@ -1,3 +1,2 @@
-const {createChatHandler}=require('../chat-api.cjs');
-const {createSharedLimiter}=require('../shared-limiter.cjs');
-module.exports=createChatHandler({limiter:createSharedLimiter()});
+const {protect}=require('../auth-security.cjs');
+module.exports=protect(require('../chat-api.cjs').createChatHandler({limiter:require('../shared-limiter.cjs').createSharedLimiter()}),{permission:'tutor:use'});

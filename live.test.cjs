@@ -12,7 +12,7 @@ test('Provider adapter processes all audio parts, transcripts and interruptions 
 
 test('Stopping pending microphone permission prevents token requests and closes late audio',async()=>{
  const elements=Object.fromEntries(['live-start','live-end','live-mute','live-consent','live-status','live-time','live-transcript'].map(id=>['#'+id,{checked:true,disabled:false,textContent:'',innerHTML:''}]));
- let grant,closes=0,requests=0;const c={window:{BoraCourses:[{lessons:[{id:'oi'}]}],BoraAccount:{accessToken:async()=> 'jwt'},BoraLiveAudio:{supported:()=>true,create:()=>({prepare:()=>new Promise(r=>grant=r),close:()=>closes++})}},location:{hash:'#live/oi'},document:{querySelector:s=>elements[s],addEventListener(){},removeEventListener(){}},AbortController,AbortSignal,clearTimeout,clearInterval,fetch:async()=>{requests++;throw Error('should not fetch')}};
+ let grant,closes=0,requests=0;const c={window:{BoraCourses:[{lessons:[{id:'oi'}]}],BoraAccount:{apiHeaders:async()=>({'Content-Type':'application/json','X-Bora-CSRF':'csrf'})},BoraLiveAudio:{supported:()=>true,create:()=>({prepare:()=>new Promise(r=>grant=r),close:()=>closes++})}},location:{hash:'#live/oi'},document:{querySelector:s=>elements[s],addEventListener(){},removeEventListener(){}},AbortController,AbortSignal,clearTimeout,clearInterval,fetch:async()=>{requests++;throw Error('should not fetch')}};
  vm.createContext(c);vm.runInContext(fs.readFileSync('dist/live-practice.js','utf8'),c);c.window.BoraLivePractice.bind({},()=>{});const start=elements['#live-start'].onclick();c.window.BoraLivePractice.stop();grant();await start;assert.equal(requests,0);assert.ok(closes>=1);
 });
 
