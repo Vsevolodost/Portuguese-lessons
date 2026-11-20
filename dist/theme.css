@@ -8,7 +8,7 @@ html[data-theme=dark] :is(h1,h2,h3,.brand .brand-word,.course-explain,.queue-car
 html[data-theme=dark] :is(p,.small,.overline,.queue-position,.queue-gesture,.queue-prompt,.queue-summary span,.queue-count span,.queue-search-row span,.side-foot){color:var(--muted)}
 html[data-theme=dark] :is(.topbar-caption,.topbar-country,.account-nav a,.sidebar nav a,.side-heading,.side-goal){color:var(--muted)}
 html[data-theme=dark] :is(.sidebar nav a:hover,.sidebar nav a[aria-current],.auth-modes,.start-options>div,.example,.notice,.feedback,.queue-translation,.queue-card,.dictionary-levels a,.queue-sources a,.word-card,.kit-rule,.kit-reading,.kit-vocabulary){background:var(--soft);border-color:var(--line);color:var(--ink)}
-html[data-theme=dark] :is(input,textarea,select,.auth-panel #server-auth-form input){background:#111e17;border-color:#49614f;color:var(--ink)}
+html[data-theme=dark] :is(input,textarea,select){background:#111e17;border-color:#49614f;color:var(--ink)}
 html[data-theme=dark] input::placeholder,html[data-theme=dark] textarea::placeholder{color:#91a398}
 html[data-theme=dark] :is(.auth-panel #server-auth-form>label,.auth-panel>p,.auth-panel #server-show-password){color:var(--muted)}
 html[data-theme=dark] .btn,html[data-theme=dark] .auth-modes a[aria-current],html[data-theme=dark] .queue-sources a[aria-current]{background:#e6c969;border-color:#e6c969;color:#17271d}
@@ -29,3 +29,15 @@ html[data-theme=dark] :is(.word-save,.audio-phrase,.module-filters button,.statu
 html[data-theme=dark] .queue-card{background:linear-gradient(140deg,#1b2c21,#233b28)}html[data-theme=dark] .queue-translation{background:#304a33;color:#deefda}
 
 @media(max-width:700px){html[data-theme=dark] .sidebar{background:var(--surface);border-color:var(--line)}html[data-theme=dark] .sidebar nav{background:var(--surface)}}
+
+/* Catalog controls share one surface; completion remains visible in either theme. */
+:root{--lesson-complete:#2f8a51;--lesson-complete-soft:#e8f5ec;--lesson-complete-ink:#21693d}
+html[data-theme=dark]{--lesson-complete:#62c987;--lesson-complete-soft:#203f2c;--lesson-complete-ink:#b8f1cb}
+html .lesson-filters :is(.search-field,.status-filter){background:var(--surface);border-color:var(--line);color:var(--muted)}
+html .lesson-filters .search-field input,html .lesson-filters .status-filter select{background:transparent;color:var(--ink);border:0;border-radius:0;box-shadow:none;margin:0}
+html .lesson-filters .search-field input::placeholder{color:var(--muted);opacity:1}
+html .lesson-filters :is(.search-field,.status-filter):focus-within{outline:2px solid var(--lesson-complete);outline-offset:3px}
+html .lesson-filters :is(input,select):focus{outline:none}
+html[data-theme] .lesson-card.is-complete{border-color:var(--lesson-complete);box-shadow:inset 0 0 0 1px var(--lesson-complete)}
+html .lesson-card.is-complete .lesson-index{background:var(--lesson-complete-soft);color:var(--lesson-complete-ink)}
+html .lesson-card.is-complete .lesson-state{display:inline-flex;align-items:center;min-height:28px;padding:3px 10px;border-radius:999px;background:var(--lesson-complete-soft);color:var(--lesson-complete-ink);font-weight:700}
