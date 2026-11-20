@@ -4,7 +4,7 @@ const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerC
 const all=()=>window.BoraCourses;
 const record=(u,c,l)=>{u.courseProgress??={};return u.courseProgress[c.id+'/'+l.id]??={stage:0,answers:{},attempts:0,correct:0,note:'',done:false}};
 const cite=()=>'';
-const summary=u=>all().map(c=>({course:c,done:c.lessons.filter(l=>u.courseProgress?.[c.id+'/'+l.id]?.done).length,total:c.lessons.length}));
+const summary=u=>all().map(c=>({course:c,done:c.lessons.filter(l=>window.BoraBeginner?window.BoraBeginner.complete(u,l):u.courseProgress?.[c.id+'/'+l.id]?.done).length,total:c.lessons.length}));
 function page(u){const parts=location.hash.slice(1).split('?')[0].split('/'),c=all().find(c=>c.id===parts[1]);
 if(!c&&window.BoraUI)return window.BoraUI.catalog(u)+cite(all()[0]);
 if(!c)return `<div class="eyebrow">Коротко · понятно · с практикой</div><h1>Учиться, чтобы общаться.</h1><p>Один урок — примерно 5–10 минут: понятная идея, примеры и маленький разговор. Начни с первого или выбери нужную тему.</p><div class="course-grid">${summary(u).map(({course:c,done,total})=>`<article class="panel"><span class="pill">🇧🇷 Бразилия · начальный курс</span><h2>${esc(c.title)}</h2><p>${esc(c.description)}</p><progress value="${done}" max="${total}" aria-label="Пройдено уроков"></progress><p class="small">${done} из ${total} уроков завершено</p><a class="btn" href="#courses/${c.id}">Открыть программу →</a></article>`).join('')}</div><div class="notice">Португальский курс даёт базу для бытового общения. В конце есть первые задачи на письмо и передачу смысла. Полная подготовка к Celpe-Bras дополнительно требует аудирования, развёрнутого письма и устной практики.</div>`;
