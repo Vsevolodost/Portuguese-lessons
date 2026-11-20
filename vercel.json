@@ -40,6 +40,10 @@
     "api/progress.js": {
       "maxDuration": 60,
       "includeFiles": "supabase-public.json"
+    },
+    "api/avatar.js": {
+      "maxDuration": 30,
+      "includeFiles": "supabase-public.json"
     }
   },
   "rewrites": [

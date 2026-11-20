@@ -9,7 +9,7 @@ Production configuration in Vercel (never commit values):
 - `BORA_AUTH_MODE=server`.
 - `BORA_SITE_URL=https://portuguese-lessons.vercel.app`.
 - `BORA_GOOGLE_AUTH_READY=true` only after enabling the provider and its redirect URL.
-- `BORA_EMAIL_AUTH_READY=false` until a verified mail sender actually delivers confirmation and recovery messages. Google signup works independently; existing password accounts can sign in.
+- `BORA_EMAIL_AUTH_READY=true` after testing SMTP delivery. Gmail SMTP is configured in Supabase; its app password stays only in Supabase. Confirmation and recovery templates must include `{{ .Token }}` for code entry.
 
 Apply `supabase/migrations/202611190001_secure_sessions.sql` once. It adds server-only session/rate-limit/client registry tables and restrictive policies; it does not rewrite learner progress. The additional active-session policy makes revoked JWTs unable to read progress directly through the Supabase Data API.
 
@@ -31,4 +31,12 @@ Web sessions expire after seven days, or 24 hours idle. Refresh tokens rotate on
 
 Run `npm test`. Check existing password login, Google signup/login, correct learner progress after reload, optimistic revision conflicts, CSRF rejection and logout. Do not test by changing real learners' progress. The ignored `.env.bora-smoke` contains the dedicated test account; do not print its credentials or tokens.
 
-Production server keys must not be copied into unrestricted previews or downloaded into local environment files. New previews use the legacy configuration until a separate test environment is provisioned. Email recovery and MFA challenge UI are not claimed as available in this release.
+Production server keys must not be copied into unrestricted previews or downloaded into local environment files. New previews use the legacy configuration until a separate test environment is provisioned. Email recovery uses a code and an isolated recovery session. MFA challenge UI is not available in this release.
+
+## Avatars and themes
+
+Apply `supabase/migrations/202611200001_private_avatars.sql` once. Images are kept in the private `bora-avatars` Supabase Storage bucket; `bora_profiles` stores the path and update time. Each authenticated user can access only their own fixed `user_id/avatar.webp` object. The web endpoint derives the owner from the validated session, never from the upload body. External OAuth clients and anonymous requests cannot access avatar endpoints. Images are served through the authenticated API with private/no-store caching, not public URLs.
+
+The browser accepts JPG/PNG/WebP up to 5 MB, crops a square preview and compresses it. The API enforces a 2 MB decoded upload bound, 16 million input pixels, static supported formats, re-encodes to WebP up to 512 pixels and drops metadata. Replacing the same object avoids accumulating old photos.
+
+`dist/theme.js` follows the existing System Lab preference pattern: system color scheme by default, an explicit local `bora-theme-v1` preference, OS changes and cross-tab updates. Theme preference is browser-only; learning progress and avatars remain server-side.
