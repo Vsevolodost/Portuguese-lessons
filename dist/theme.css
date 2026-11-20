@@ -27,3 +27,5 @@ html[data-theme=dark] :is(.next-card,.coach-card,.module-preview,.lesson-card,.c
 html[data-theme=dark] :is(.word-card span,.dictionary-word span,.reading-translation,.trainer-direction,.guided-goal,.guided-idea p,.guided-example p,.guided-vocabulary p,.guided-reading p,.guided-help p,.lesson-module,.lesson-topic,.lesson-state){color:var(--muted)}
 html[data-theme=dark] :is(.word-save,.audio-phrase,.module-filters button,.status-filter select,.focus-button,.lesson-stepper span,.sentence-tray button,.word-bank button){background:var(--soft);border-color:var(--line);color:var(--ink)}
 html[data-theme=dark] .queue-card{background:linear-gradient(140deg,#1b2c21,#233b28)}html[data-theme=dark] .queue-translation{background:#304a33;color:#deefda}
+
+@media(max-width:700px){html[data-theme=dark] .sidebar{background:var(--surface);border-color:var(--line)}html[data-theme=dark] .sidebar nav{background:var(--surface)}}
