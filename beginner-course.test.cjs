@@ -75,3 +75,8 @@ test('New scripts and exact listening audio are served by the application, inclu
     const audio=setup().ctx.window.BoraAudioExact['tudo bem?'];const response=await fetch(base+audio.src,{headers:{Range:'bytes=0-127'}});assert.equal(response.status,206);assert.equal((await response.arrayBuffer()).byteLength,128);assert.match(response.headers.get('content-type'),/^audio\/mpeg/);
   }finally{await new Promise(resolve=>server.close(resolve));}
 });
+test('Catalog distinguishes completed and current lessons; home resumes the actual step without mutating progress',()=>{
+  const user={name:'<script>student</script>',currentLesson:'bem',courseProgress:{'pt/oi':{done:true,guided:{version:2,finishedAt:'2026-11-20T12:00:00Z'}},'pt/bem':{guided:{version:2,index:2,answers:{},drafts:{},tokens:[]}}}},x=setup('bem',user),w=x.ctx.window,before=JSON.stringify(user);
+  const html=w.BoraUI.catalog(user);assert.equal((html.match(/class="lesson-card is-complete"/g)||[]).length,1);assert.equal((html.match(/class="lesson-card is-current"/g)||[]).length,1);assert.match(html,/class="lesson-card is-current" data-lesson-id="bem"/);assert.ok(!html.includes('is-complete is-current'));
+  const home=w.BoraUI.home(user);assert.match(home,/шаг 3 из 11/);assert.match(home,/1 \/ 36 уроков/);assert.match(home,/href="#courses\/pt\/bem"/);assert.match(home,/class="continue-cover"/);assert.ok(!home.includes('<script>student'));assert.equal(JSON.stringify(user),before);
+});
