@@ -19,7 +19,7 @@
     },
     "api/speech.js": {
       "maxDuration": 90,
-      "includeFiles": "supabase-public.json"
+      "includeFiles": "{supabase-public.json,frontend/src/data/audio.json,dist/assets/audio/*.mp3}"
     },
     "api/transcribe.js": {
       "maxDuration": 90,

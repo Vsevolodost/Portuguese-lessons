@@ -32,21 +32,34 @@ export function Listen({
     >("idle"),
     ref = useRef<HTMLAudioElement | null>(null),
     url = useRef(""),
-    request = useRef<AbortController | null>(null);
-  useEffect(
-    () => () => {
+    request = useRef<AbortController | null>(null),
+    utterance = useRef<SpeechSynthesisUtterance | null>(null);
+  useEffect(() => {
+    if (typeof speechSynthesis !== "undefined") speechSynthesis.getVoices();
+    return () => {
       request.current?.abort();
+      if (utterance.current) {
+        utterance.current.onend = null;
+        utterance.current.onerror = null;
+        speechSynthesis.cancel();
+        utterance.current = null;
+      }
       ref.current?.pause();
       if (url.current)
         url.current.startsWith("blob:") && URL.revokeObjectURL(url.current);
       url.current = "";
       ref.current = null;
-    },
-    [text],
-  );
+    };
+  }, [text]);
   async function play() {
     if (status === "playing") {
       ref.current?.pause();
+      if (utterance.current) {
+        utterance.current.onend = null;
+        utterance.current.onerror = null;
+        speechSynthesis.cancel();
+        utterance.current = null;
+      }
       setStatus("idle");
       return;
     }
@@ -67,9 +80,37 @@ export function Listen({
       await player.play();
       setStatus("playing");
     } catch (e) {
-      if (!controller.signal.aborted) setStatus("error");
+      if (controller.signal.aborted) return;
+      const voice =
+        typeof speechSynthesis !== "undefined"
+          ? speechSynthesis.getVoices().find((v) => /^pt[-_]br$/i.test(v.lang))
+          : null;
+      if (voice) {
+        const spoken = new SpeechSynthesisUtterance(text);
+        spoken.voice = voice;
+        spoken.lang = "pt-BR";
+        spoken.rate = 0.9;
+        utterance.current = spoken;
+        spoken.onend = () => {
+          utterance.current = null;
+          setStatus("idle");
+        };
+        spoken.onerror = () => {
+          utterance.current = null;
+          setStatus("error");
+        };
+        speechSynthesis.cancel();
+        try {
+          speechSynthesis.speak(spoken);
+          setStatus("playing");
+        } catch {
+          utterance.current = null;
+          setStatus("error");
+        }
+      } else setStatus("error");
     }
   }
+  if (!/[\p{L}\p{N}]/u.test(text)) return null;
   return (
     <span className="listen-wrap">
       <button
