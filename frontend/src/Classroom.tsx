@@ -1,3 +1,4 @@
+import { stepSatisfied, graded } from "./step-state";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   Link,
@@ -49,6 +50,7 @@ export function Classroom() {
         const v = record(u, id);
         v.reviewIndex = 0;
         v.reviewAnswers = {};
+        v.reviewWritten = {};
         v.reviewStartedAt = new Date().toISOString();
       });
   }, [id, review, user]);
@@ -58,8 +60,9 @@ export function Classroom() {
       : user?.v2?.lessons[id]?.index) || 0;
   useEffect(() => {
     setText(
-      user?.v2?.lessons[id]?.drafts[(review ? "review:" : "") + activeIndex] ||
-        "",
+      user?.v2?.lessons[id]?.drafts[
+        (review ? "review:" : "") + (steps[activeIndex]?.key || activeIndex)
+      ] || "",
     );
     setPicked(null);
     setFeedback(null);
@@ -89,11 +92,7 @@ export function Classroom() {
       state(u).current = id;
       if (
         at === steps.length &&
-        steps.every(
-          (s, i) =>
-            !["choice", "short", "build"].includes(s.kind) ||
-            (review ? rec.reviewAnswers : rec.answers)?.[String(i)]?.correct,
-        )
+        steps.every((s, i) => stepSatisfied(s, i, rec, review))
       ) {
         if (review) finishReview(u, id);
         else finish(u, id);
@@ -113,7 +112,7 @@ export function Classroom() {
       answer(
         u,
         id,
-        String(index),
+        step.key || String(index),
         step.kind === "choice" ? picked! : text,
         correct,
         review,
@@ -121,12 +120,22 @@ export function Classroom() {
     );
     setFeedback(correct);
   }
-  const checked = step && ["choice", "short", "build"].includes(step.kind),
-    allAnswered = steps.every(
-      (s, i) =>
-        !["choice", "short", "build"].includes(s.kind) ||
-        answers[String(i)]?.correct,
-    );
+  const checked = step && graded(step.kind),
+    writingDone =
+      !!step &&
+      step.kind === "writing" &&
+      stepSatisfied(step, index, r, review),
+    allAnswered = steps.every((s, i) => stepSatisfied(s, i, r, review));
+  function compareWriting() {
+    update((u) => {
+      const rec = record(u, id);
+      const saved = review ? (rec.reviewWritten ??= {}) : (rec.written ??= {});
+      saved[step.key || String(index)] = {
+        text,
+        submittedAt: new Date().toISOString(),
+      };
+    });
+  }
   return (
     <div className="classroom">
       <header className="classroom-header">
@@ -156,6 +165,11 @@ export function Classroom() {
       </header>
       <main className="classroom-content" ref={contentRef}>
         <div className="lesson-paper">
+          {!review && r?.completedAt && !done && (
+            <p className="muted">
+              В урок добавлены материалы и практика. Прежний результат сохранён.
+            </p>
+          )}
           {done ? (
             <>
               <span className="eyebrow">
@@ -180,9 +194,7 @@ export function Classroom() {
                     className="button"
                     onClick={() => {
                       const first = steps.findIndex(
-                        (s, i) =>
-                          ["choice", "short", "build"].includes(s.kind) &&
-                          !r?.answers[String(i)]?.correct,
+                        (s, i) => !stepSatisfied(s, i, r, review),
                       );
                       update((u) => {
                         if (review)
@@ -302,6 +314,49 @@ export function Classroom() {
                   ))}
                 </div>
               )}
+              {step.kind === "writing" && (
+                <section className="writing-work">
+                  <label className="write-answer">
+                    Твой текст
+                    <textarea
+                      lang="pt-BR"
+                      rows={5}
+                      maxLength={1200}
+                      value={text}
+                      onChange={(e) => {
+                        setText(e.target.value);
+                        update((u) => {
+                          const rec = record(u, id);
+                          rec.drafts[
+                            (review ? "review:" : "") + (step.key || index)
+                          ] = e.target.value;
+                          delete (review ? rec.reviewWritten : rec.written)?.[
+                            step.key || String(index)
+                          ];
+                        });
+                      }}
+                      placeholder="Начни с одной знакомой фразы"
+                    />
+                  </label>
+                  {writingDone && (
+                    <div className="writing-comparison">
+                      <h2>Сравни с образцом</h2>
+                      <p lang="pt-BR">{step.model?.[0]}</p>
+                      <p>{step.model?.[1]}</p>
+                      <h3>Проверь свой текст</h3>
+                      <ul>
+                        {step.checklist?.map((c) => (
+                          <li key={c}>{c}</li>
+                        ))}
+                      </ul>
+                      <p className="muted">
+                        Это самостоятельная работа. Совпадать с образцом слово в
+                        слово не нужно.
+                      </p>
+                    </div>
+                  )}
+                </section>
+              )}
               {step.kind === "short" && (
                 <label className="write-answer">
                   Твой ответ
@@ -313,7 +368,7 @@ export function Classroom() {
                       setText(e.target.value);
                       update((u) => {
                         record(u, id).drafts[
-                          (review ? "review:" : "") + index
+                          (review ? "review:" : "") + (step.key || index)
                         ] = e.target.value;
                       });
                       setFeedback(null);
@@ -341,6 +396,7 @@ export function Classroom() {
                   <div>
                     {(
                       lesson.legacy?.foundation?.words ||
+                      lesson.legacy?.expansion?.words ||
                       lesson.legacy?.examples ||
                       []
                     ).map((w, i) => (
@@ -369,7 +425,15 @@ export function Classroom() {
             <span className="step-counter">
               {index + 1} / {steps.length}
             </span>
-            {checked && feedback !== true ? (
+            {step.kind === "writing" && !writingDone ? (
+              <button
+                className="button"
+                disabled={!/[a-záéíóúãõâêôç]/i.test(text.trim())}
+                onClick={compareWriting}
+              >
+                Сравнить с образцом
+              </button>
+            ) : checked && feedback !== true ? (
               <button
                 className="button"
                 disabled={

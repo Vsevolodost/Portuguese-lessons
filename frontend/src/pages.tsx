@@ -10,7 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Button, PageHeading, Shell, Listen } from "./components";
-import { levels, lessons, units } from "./data";
+import { levels, lessons } from "./data";
 import {
   complete,
   due,
@@ -135,19 +135,21 @@ export function Program() {
         description="Сначала освоим основу. Затем будем читать, слушать и общаться всё увереннее."
       />
       <div className="level-tabs" role="tablist" aria-label="Уровень программы">
-        {levels.map((l) => (
-          <button
-            role="tab"
-            aria-selected={level === l}
-            key={l}
-            onClick={() => {
-              setLevel(l);
-              setSelected("");
-            }}
-          >
-            {l}
-          </button>
-        ))}
+        {levels
+          .filter((level) => lessons.some((l) => l.level === level))
+          .map((l) => (
+            <button
+              role="tab"
+              aria-selected={level === l}
+              key={l}
+              onClick={() => {
+                setLevel(l);
+                setSelected("");
+              }}
+            >
+              {l}
+            </button>
+          ))}
       </div>
       <div className="section-heading">
         <div>
@@ -203,27 +205,6 @@ export function Program() {
             </button>
           ))}
       </div>
-      {level !== "Старт" && (
-        <section className="syllabus">
-          <h2>Куда будем двигаться дальше</h2>
-          <p className="muted">
-            План разделов. Новые занятия появятся после проверки содержания.
-          </p>
-          {units
-            .filter((u) => u.level === level)
-            .map((u) => (
-              <article key={u.id}>
-                <span className="eyebrow">Раздел {u.unit_number}</span>
-                <h3>{u.titleRu}</h3>
-                <ul>
-                  {u.goals?.map((g) => (
-                    <li key={g}>{g}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-        </section>
-      )}
     </>
   );
 }
@@ -237,7 +218,12 @@ export function Dictionary() {
         lessons
           .filter((l) => l.level === level)
           .flatMap((l) =>
-            (l.legacy?.foundation?.words || l.legacy?.examples || []).map(
+            (
+              l.legacy?.foundation?.words ||
+              l.legacy?.expansion?.words ||
+              l.legacy?.examples ||
+              []
+            ).map(
               (w) => [w[0], { pt: w[0], ru: w[1], lesson: l.title }] as const,
             ),
           ),

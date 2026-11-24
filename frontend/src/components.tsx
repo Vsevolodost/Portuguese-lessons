@@ -1,4 +1,4 @@
-import storedAudio from "./data/audio.json";
+import storedAudio from "./data/audio-index.json";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -76,6 +76,7 @@ export function Listen({
       setStatus("idle");
       return;
     }
+    window.dispatchEvent(new Event("bora:stop-audio"));
     setStatus("loading");
     request.current?.abort();
     const controller = new AbortController();
@@ -83,13 +84,14 @@ export function Listen({
     try {
       if (!url.current)
         url.current =
-          (storedAudio as Record<string, { src: string }>)[
+          (storedAudio as Record<string, string>)[
             text.trim().toLocaleLowerCase("pt-BR")
-          ]?.src || (await audio(text, controller.signal));
+          ] || (await audio(text, controller.signal));
       if (controller.signal.aborted) return;
       const player = (ref.current ??= new Audio());
       player.src = url.current;
       player.onended = () => setStatus("idle");
+      player.onerror = () => setStatus("error");
       await player.play();
       setStatus("playing");
     } catch (e) {

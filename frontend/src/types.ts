@@ -58,6 +58,23 @@ export type LegacyLesson = {
   examples: string[][];
   quiz: [string, string[], number, string][];
   write: [string, string[], string];
+  expansion?: {
+    words: string[][];
+    parts: string[][];
+    rule: string;
+    readingNote: string;
+    reading: {
+      pt: string;
+      ru: string;
+      question: string;
+      options: string[];
+      answer: number;
+    };
+    spell: string[];
+    model: string[];
+    writing: { prompt: string; checklist: string[] };
+    scene: string;
+  };
   foundation?: {
     goal?: string;
     words: string[][];
@@ -68,6 +85,7 @@ export type LegacyLesson = {
     practice: Record<string, unknown>[];
     tests: Record<string, unknown>[];
     personal?: string;
+    writingModel?: string[];
     review: string[];
   };
 };
@@ -95,6 +113,8 @@ export type LessonRecord = {
   answers: Record<string, Answer>;
   drafts: Record<string, string>;
   tokens: number[];
+  written?: Record<string, { text: string; submittedAt: string }>;
+  reviewWritten?: Record<string, { text: string; submittedAt: string }>;
   startedAt: string;
   reviewStartedAt?: string;
   reviewAnswers?: Record<string, Answer>;

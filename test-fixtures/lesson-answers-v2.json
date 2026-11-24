@@ -1,0 +1,1903 @@
+{
+  "oi": [
+    {
+      "index": 6,
+      "title": "Ана сказала Oi! Что можно ответить?",
+      "kind": "choice",
+      "options": [
+        "Нужно сначала назвать город",
+        "Можно тоже сказать Oi!"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Человек здоровается",
+        "Человек называет своё имя"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Что означает Oi!?",
+      "kind": "choice",
+      "options": [
+        "Привет!",
+        "Меня зовут…"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 9,
+      "title": "Какое из изученных приветствий более неформальное?",
+      "kind": "choice",
+      "options": [
+        "Olá!",
+        "Oi!"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 10,
+      "title": "Напиши одно из двух приветствий по-португальски.",
+      "kind": "short",
+      "answers": [
+        "oi",
+        "ola"
+      ]
+    }
+  ],
+  "bem": [
+    {
+      "index": 6,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "bem?",
+        "Tudo"
+      ],
+      "answers": [
+        "Tudo bem?"
+      ],
+      "correct": "Tudo bem?"
+    },
+    {
+      "index": 7,
+      "title": "Tudo bem? и Tudo bem. отличаются…",
+      "kind": "choice",
+      "options": [
+        "порядком слов",
+        "интонацией и знаком в конце"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 8,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Приветствие и вопрос о делах",
+        "Только имя человека"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 9,
+      "title": "Что означает tudo?",
+      "kind": "choice",
+      "options": [
+        "хорошо",
+        "всё"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 10,
+      "title": "Как ответить изученными словами, что всё хорошо?",
+      "kind": "choice",
+      "options": [
+        "Tudo bem.",
+        "Olá!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 11,
+      "title": "Допиши «Всё хорошо»: Tudo ___.",
+      "kind": "short",
+      "answers": [
+        "bem"
+      ]
+    }
+  ],
+  "voce": [
+    {
+      "index": 6,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "você?",
+        "E"
+      ],
+      "answers": [
+        "E você?"
+      ],
+      "correct": "E você?"
+    },
+    {
+      "index": 7,
+      "title": "Ты уже ответил Tudo bem. Что добавить, чтобы вернуть вопрос?",
+      "kind": "choice",
+      "options": [
+        "E você?",
+        "Oi!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Человек только здоровается",
+        "Человек отвечает и спрашивает в ответ"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 9,
+      "title": "К кому обращено você в нашей реплике?",
+      "kind": "choice",
+      "options": [
+        "К собеседнику",
+        "К говорящему"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 10,
+      "title": "Как спросить «А у тебя?»",
+      "kind": "choice",
+      "options": [
+        "Tudo bem.",
+        "E você?"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 11,
+      "title": "Допиши вопрос в ответ: E ___?",
+      "kind": "short",
+      "answers": [
+        "voce"
+      ]
+    }
+  ],
+  "saudacoes": [
+    {
+      "index": 6,
+      "title": "Вы встретились утром. Выбери приветствие.",
+      "kind": "choice",
+      "options": [
+        "Boa noite!",
+        "Bom dia!",
+        "Boa tarde!"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Добрый вечер!",
+        "Доброе утро!",
+        "Добрый день!"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 8,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "noite!",
+        "Boa"
+      ],
+      "answers": [
+        "Boa noite!"
+      ],
+      "correct": "Boa noite!"
+    },
+    {
+      "index": 9,
+      "title": "После полудня ты заходишь в магазин. Что скажешь?",
+      "kind": "choice",
+      "options": [
+        "Boa tarde!",
+        "Bom dia!",
+        "Boa noite!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 10,
+      "title": "Какое приветствие подходит вечером?",
+      "kind": "choice",
+      "options": [
+        "Bom dia!",
+        "Boa noite!",
+        "Boa tarde!"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 11,
+      "title": "Допиши утреннее приветствие: Bom ___!",
+      "kind": "short",
+      "answers": [
+        "dia"
+      ]
+    }
+  ],
+  "nome": [
+    {
+      "index": 6,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "Ana.",
+        "sou",
+        "Eu"
+      ],
+      "answers": [
+        "Eu sou Ana."
+      ],
+      "correct": "Eu sou Ana."
+    },
+    {
+      "index": 7,
+      "title": "Что меняем в Eu sou Ana., чтобы назвать себя?",
+      "kind": "choice",
+      "options": [
+        "Убираем sou",
+        "Заменяем Ana своим именем"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 8,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Человек представляется",
+        "Человек спрашивает, как дела"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 9,
+      "title": "Что означает eu?",
+      "kind": "choice",
+      "options": [
+        "я",
+        "ты / вы"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 10,
+      "title": "Как построить изученную фразу с именем?",
+      "kind": "choice",
+      "options": [
+        "Eu + имя + sou",
+        "Eu + sou + имя"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 11,
+      "title": "Допиши «Я Ана»: Eu ___ Ana.",
+      "kind": "short",
+      "answers": [
+        "sou"
+      ]
+    }
+  ],
+  "chama": [
+    {
+      "index": 6,
+      "title": "Тебя спросили Como você se chama? Что подойдёт?",
+      "kind": "choice",
+      "options": [
+        "Eu sou Ana.",
+        "Boa noite!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "Paulo.",
+        "é",
+        "nome",
+        "Meu"
+      ],
+      "answers": [
+        "Meu nome é Paulo."
+      ],
+      "correct": "Meu nome é Paulo."
+    },
+    {
+      "index": 8,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Вопрос о времени",
+        "Вопрос об имени"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 9,
+      "title": "Как спросить имя?",
+      "kind": "choice",
+      "options": [
+        "E você?",
+        "Como você se chama?"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 10,
+      "title": "Что означает nome?",
+      "kind": "choice",
+      "options": [
+        "имя",
+        "всё"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 11,
+      "title": "Допиши «Меня зовут Ана»: Meu nome ___ Ana.",
+      "kind": "short",
+      "answers": [
+        "e"
+      ]
+    }
+  ],
+  "repetir": [
+    {
+      "index": 6,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "repetir?",
+        "Pode"
+      ],
+      "answers": [
+        "Pode repetir?"
+      ],
+      "correct": "Pode repetir?"
+    },
+    {
+      "index": 7,
+      "title": "Ты не расслышал вопрос. Что поможет?",
+      "kind": "choice",
+      "options": [
+        "Делать вид, что понял",
+        "Сказать Não entendi. Pode repetir?"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 8,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Просьба повторить",
+        "Ответ об имени"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 9,
+      "title": "Что означает Não entendi.?",
+      "kind": "choice",
+      "options": [
+        "Всё хорошо",
+        "Не понял / не поняла"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 10,
+      "title": "Как попросить повторить?",
+      "kind": "choice",
+      "options": [
+        "Pode repetir?",
+        "Eu sou Ana."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 11,
+      "title": "Допиши просьбу: Pode ___?",
+      "kind": "short",
+      "answers": [
+        "repetir"
+      ]
+    }
+  ],
+  "primeiro-dialogo": [
+    {
+      "index": 6,
+      "title": "Узнай на слух",
+      "kind": "choice",
+      "options": [
+        "Просят повторить",
+        "Спрашивают имя",
+        "Приветствуют утром"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Собери знакомую фразу",
+      "kind": "build",
+      "options": [
+        "você?",
+        "E",
+        "bem.",
+        "Tudo"
+      ],
+      "answers": [
+        "Tudo bem. E você?"
+      ],
+      "correct": "Tudo bem. E você?"
+    },
+    {
+      "index": 8,
+      "title": "Собеседник сказал Não entendi. Pode repetir? Что сделать?",
+      "kind": "choice",
+      "options": [
+        "Повторить свою реплику",
+        "Сменить тему и не отвечать"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 9,
+      "title": "Вечером ты начинаешь разговор. Выбери подходящую реплику.",
+      "kind": "choice",
+      "options": [
+        "Bom dia!",
+        "Boa noite!"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 10,
+      "title": "Тебя спросили Como você se chama? Выбери ответ.",
+      "kind": "choice",
+      "options": [
+        "Meu nome é Paulo.",
+        "Tudo bem."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 11,
+      "title": "Собеседник спросил Tudo bem? Как ответить и вернуть вопрос?",
+      "kind": "choice",
+      "options": [
+        "Eu sou Ana.",
+        "Tudo bem. E você?"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 12,
+      "title": "Попроси повторить двумя словами.",
+      "kind": "short",
+      "answers": [
+        "pode repetir"
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Допиши: Eu ___ Ana.",
+      "kind": "short",
+      "answers": [
+        "sou"
+      ]
+    }
+  ],
+  "letters": [
+    {
+      "index": 6,
+      "title": "Нужно ли сначала выучить все правила чтения?",
+      "kind": "choice",
+      "options": [
+        "Да, без этого нельзя сказать ни слова",
+        "Нет, начинаем со знакомых слов и аудио"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Oi!»?",
+      "kind": "choice",
+      "options": [
+        "Привет!",
+        "Здравствуйте!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Привет!",
+      "kind": "short",
+      "answers": [
+        "Oi!"
+      ]
+    }
+  ],
+  "accent": [
+    {
+      "index": 6,
+      "title": "Что обозначает знак в café?",
+      "kind": "choice",
+      "options": [
+        "Подсказывает ударение и чтение",
+        "Обозначает множественное число"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Um café, por favor.»?",
+      "kind": "choice",
+      "options": [
+        "Один кофе, пожалуйста.",
+        "Воды, пожалуйста."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Один кофе, пожалуйста.",
+      "kind": "short",
+      "answers": [
+        "Um café, por favor."
+      ]
+    }
+  ],
+  "nasal": [
+    {
+      "index": 6,
+      "title": "Как коротко ответить «нет»?",
+      "kind": "choice",
+      "options": [
+        "Sim.",
+        "Não."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Sim.»?",
+      "kind": "choice",
+      "options": [
+        "Да.",
+        "Нет, спасибо."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Да.",
+      "kind": "short",
+      "answers": [
+        "Sim."
+      ]
+    }
+  ],
+  "polite": [
+    {
+      "index": 6,
+      "title": "От кого зависит obrigado / obrigada?",
+      "kind": "choice",
+      "options": [
+        "От того, кто благодарит",
+        "От того, кому говорят спасибо"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Água, por favor.»?",
+      "kind": "choice",
+      "options": [
+        "Воды, пожалуйста.",
+        "Спасибо!",
+        "Не за что."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Воды, пожалуйста.",
+      "kind": "short",
+      "answers": [
+        "Água, por favor."
+      ]
+    }
+  ],
+  "excuse": [
+    {
+      "index": 6,
+      "title": "Тебе нужно пройти между людьми. Что сказать?",
+      "kind": "choice",
+      "options": [
+        "Com licença.",
+        "De nada."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Com licença.»?",
+      "kind": "choice",
+      "options": [
+        "Разрешите пройти.",
+        "Извините."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Разрешите пройти.",
+      "kind": "short",
+      "answers": [
+        "Com licença."
+      ]
+    }
+  ],
+  "pronouns": [
+    {
+      "index": 6,
+      "title": "Какое слово нужно, если говоришь о себе?",
+      "kind": "choice",
+      "options": [
+        "ela",
+        "eu"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Eu sou Ana.»?",
+      "kind": "choice",
+      "options": [
+        "Я Ана.",
+        "Она Ана.",
+        "Ты Паулу?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Я Ана.",
+      "kind": "short",
+      "answers": [
+        "Eu sou Ana."
+      ]
+    }
+  ],
+  "identity": [
+    {
+      "index": 6,
+      "title": "Какая форма нужна после eu?",
+      "kind": "choice",
+      "options": [
+        "sou",
+        "é"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Eu sou estudante.»?",
+      "kind": "choice",
+      "options": [
+        "Я студент / студентка.",
+        "Она преподавательница."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Я студент / студентка.",
+      "kind": "short",
+      "answers": [
+        "Eu sou estudante."
+      ]
+    }
+  ],
+  "state": [
+    {
+      "index": 6,
+      "title": "Ты сообщаешь, где сейчас находишься. Выбери фразу.",
+      "kind": "choice",
+      "options": [
+        "Sou em casa.",
+        "Estou em casa."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Estou em casa.»?",
+      "kind": "choice",
+      "options": [
+        "Я дома.",
+        "Ты в порядке?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Я дома.",
+      "kind": "short",
+      "answers": [
+        "Estou em casa."
+      ]
+    }
+  ],
+  "possession": [
+    {
+      "index": 6,
+      "title": "Как строится фраза о возрасте?",
+      "kind": "choice",
+      "options": [
+        "С ter: tenho … anos",
+        "С ser: sou … anos"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Tenho um livro.»?",
+      "kind": "choice",
+      "options": [
+        "У меня есть книга.",
+        "У тебя есть вода?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: У меня есть книга.",
+      "kind": "short",
+      "answers": [
+        "Tenho um livro."
+      ]
+    }
+  ],
+  "article": [
+    {
+      "index": 6,
+      "title": "Как лучше запоминать новое существительное?",
+      "kind": "choice",
+      "options": [
+        "Без всяких маленьких слов",
+        "Вместе с его артиклем"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «O livro está aqui.»?",
+      "kind": "choice",
+      "options": [
+        "Книга здесь.",
+        "Дом красивый."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Книга здесь.",
+      "kind": "short",
+      "answers": [
+        "O livro está aqui."
+      ]
+    }
+  ],
+  "question": [
+    {
+      "index": 6,
+      "title": "Нужно ли всегда менять порядок слов в таком вопросе?",
+      "kind": "choice",
+      "options": [
+        "Нет, достаточно вопросительной интонации",
+        "Да, всегда меняем слова местами"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Você é estudante?»?",
+      "kind": "choice",
+      "options": [
+        "Ты студент / студентка?",
+        "Да, я студент / студентка."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Ты студент / студентка?",
+      "kind": "short",
+      "answers": [
+        "Você é estudante?"
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "index": 6,
+      "title": "Где стоит não в простой отрицательной фразе?",
+      "kind": "choice",
+      "options": [
+        "Перед глаголом",
+        "Только в самом конце"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Não entendo.»?",
+      "kind": "choice",
+      "options": [
+        "Я не понимаю.",
+        "Я не знаю."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Я не понимаю.",
+      "kind": "short",
+      "answers": [
+        "Não entendo."
+      ]
+    }
+  ],
+  "numbers-small": [
+    {
+      "index": 6,
+      "title": "Сколько означает três?",
+      "kind": "choice",
+      "options": [
+        "Три",
+        "Пять"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Um café, por favor.»?",
+      "kind": "choice",
+      "options": [
+        "Один кофе, пожалуйста.",
+        "Два кофе, пожалуйста."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Один кофе, пожалуйста.",
+      "kind": "short",
+      "answers": [
+        "Um café, por favor."
+      ]
+    }
+  ],
+  "numbers-ten": [
+    {
+      "index": 6,
+      "title": "Сколько означает oito?",
+      "kind": "choice",
+      "options": [
+        "Десять",
+        "Восемь"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Tenho seis livros.»?",
+      "kind": "choice",
+      "options": [
+        "У меня шесть книг.",
+        "У меня десять книг."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: У меня шесть книг.",
+      "kind": "short",
+      "answers": [
+        "Tenho seis livros."
+      ]
+    }
+  ],
+  "plural": [
+    {
+      "index": 6,
+      "title": "Как меняется a casa во множественном числе?",
+      "kind": "choice",
+      "options": [
+        "as casas",
+        "o casa"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Os livros estão aqui.»?",
+      "kind": "choice",
+      "options": [
+        "Книги здесь.",
+        "Дома красивые."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Книги здесь.",
+      "kind": "short",
+      "answers": [
+        "Os livros estão aqui."
+      ]
+    }
+  ],
+  "survival": [
+    {
+      "index": 6,
+      "title": "Как попросить говорить медленнее?",
+      "kind": "choice",
+      "options": [
+        "Mais devagar, por favor.",
+        "De nada."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 7,
+      "title": "Как переводится «Mais devagar, por favor.»?",
+      "kind": "choice",
+      "options": [
+        "Помедленнее, пожалуйста.",
+        "Можете повторить?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 8,
+      "title": "Восстанови фразу: Помедленнее, пожалуйста.",
+      "kind": "short",
+      "answers": [
+        "Mais devagar, por favor."
+      ]
+    }
+  ],
+  "origem": [
+    {
+      "index": 3,
+      "title": "Как сказать «Я из России»?",
+      "kind": "choice",
+      "options": [
+        "Eu estou Rússia.",
+        "Eu sou da Rússia.",
+        "Eu sou Rússia."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 4,
+      "title": "Из чего получилось da?",
+      "kind": "choice",
+      "options": [
+        "de + a",
+        "de + o",
+        "em + a"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Напиши «Я из Москвы».",
+      "kind": "short",
+      "answers": [
+        "eu sou de moscou",
+        "sou de moscou"
+      ]
+    }
+  ],
+  "estar": [
+    {
+      "index": 3,
+      "title": "Как сказать «Я сейчас дома»?",
+      "kind": "choice",
+      "options": [
+        "Eu estou em casa.",
+        "Eu sou em casa.",
+        "Eu tenho em casa."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Почему cansado и cansada отличаются?",
+      "kind": "choice",
+      "options": [
+        "Из-за формальности",
+        "Из-за времени суток",
+        "Из-за рода говорящего"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 5,
+      "title": "Вставь один глагол: Eu ___ em casa.",
+      "kind": "short",
+      "answers": [
+        "estou"
+      ]
+    }
+  ],
+  "artigos": [
+    {
+      "index": 3,
+      "title": "Выбери правильную пару для casa.",
+      "kind": "choice",
+      "options": [
+        "o casa",
+        "eu casa",
+        "a casa"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 4,
+      "title": "Uma casa обычно вводит…",
+      "kind": "choice",
+      "options": [
+        "моё имя",
+        "какой-то дом",
+        "несколько домов"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 5,
+      "title": "Поставь артикль a перед casa.",
+      "kind": "short",
+      "answers": [
+        "a casa"
+      ]
+    }
+  ],
+  "nao": [
+    {
+      "index": 3,
+      "title": "Где стоит não в «Я не говорю»?",
+      "kind": "choice",
+      "options": [
+        "Não eu português.",
+        "Eu não falo.",
+        "Eu falo não português."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 4,
+      "title": "Что означает um pouco?",
+      "kind": "choice",
+      "options": [
+        "Немного",
+        "Всегда",
+        "Вчера"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Напиши «Я не говорю»: Eu / não / falo.",
+      "kind": "short",
+      "answers": [
+        "eu nao falo"
+      ]
+    }
+  ],
+  "ter": [
+    {
+      "index": 3,
+      "title": "Вставь: Eu ___ um irmão.",
+      "kind": "choice",
+      "options": [
+        "tenho",
+        "sou",
+        "estou"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Как спросить, есть ли время?",
+      "kind": "choice",
+      "options": [
+        "Você tem tempo?",
+        "Você é tempo?",
+        "Você está tempo?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Eu ___ vinte anos.",
+      "kind": "short",
+      "answers": [
+        "tenho"
+      ]
+    }
+  ],
+  "familia": [
+    {
+      "index": 3,
+      "title": "Как сказать «моя сестра»?",
+      "kind": "choice",
+      "options": [
+        "minha irmã",
+        "meu irmã",
+        "minha irmão"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Dela уточняет…",
+      "kind": "choice",
+      "options": [
+        "её",
+        "их",
+        "нас"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: ___ irmão (мой брат).",
+      "kind": "short",
+      "answers": [
+        "meu",
+        "o meu"
+      ]
+    }
+  ],
+  "rotina": [
+    {
+      "index": 3,
+      "title": "Как сказать «Я изучаю португальский»?",
+      "kind": "choice",
+      "options": [
+        "Eu estudo português.",
+        "Eu estudar português.",
+        "Eu estuda português."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Кто живёт в фразе Você mora aqui?",
+      "kind": "choice",
+      "options": [
+        "Я",
+        "Мы",
+        "Ты / вы"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 5,
+      "title": "Заполни: Eu ___ português. (estudar)",
+      "kind": "short",
+      "answers": [
+        "estudo"
+      ]
+    }
+  ],
+  "gostar": [
+    {
+      "index": 3,
+      "title": "Выбери естественную фразу.",
+      "kind": "choice",
+      "options": [
+        "Eu gosto de café.",
+        "Eu gosto café.",
+        "Eu sou gosto café."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Вставь: Ela ___ de música.",
+      "kind": "choice",
+      "options": [
+        "gosta",
+        "gosto",
+        "gostar"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Eu gosto ___ estudar.",
+      "kind": "short",
+      "answers": [
+        "de"
+      ]
+    }
+  ],
+  "numeros": [
+    {
+      "index": 3,
+      "title": "Тебе сказали cinco reais. Это…",
+      "kind": "choice",
+      "options": [
+        "2 реала",
+        "10 реалов",
+        "5 реалов"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 4,
+      "title": "Как спросить цену?",
+      "kind": "choice",
+      "options": [
+        "De onde você é?",
+        "Quanto custa?",
+        "Como você se chama?"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 5,
+      "title": "Напиши число 3 словом.",
+      "kind": "short",
+      "answers": [
+        "tres"
+      ]
+    }
+  ],
+  "horas": [
+    {
+      "index": 3,
+      "title": "Выбери «Сейчас два часа».",
+      "kind": "choice",
+      "options": [
+        "São duas horas.",
+        "É duas horas.",
+        "Tenho duas horas agora."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Às oito означает…",
+      "kind": "choice",
+      "options": [
+        "в восемь",
+        "вчера",
+        "восьмой дом"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Напиши число словом: às ___ (в девять).",
+      "kind": "short",
+      "answers": [
+        "nove"
+      ]
+    }
+  ],
+  "cafe": [
+    {
+      "index": 3,
+      "title": "Как попросить кофе без сахара?",
+      "kind": "choice",
+      "options": [
+        "Até amanhã, café.",
+        "Um café sem açúcar, por favor.",
+        "Um café com açúcar."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 4,
+      "title": "Что ты спрашиваешь с Tem água?",
+      "kind": "choice",
+      "options": [
+        "Есть ли вода",
+        "Как зовут воду",
+        "Где ты живёшь"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь «без»: café ___ açúcar.",
+      "kind": "short",
+      "answers": [
+        "sem"
+      ]
+    }
+  ],
+  "compras": [
+    {
+      "index": 3,
+      "title": "Как спросить цену?",
+      "kind": "choice",
+      "options": [
+        "Quanto custa?",
+        "Onde custa?",
+        "Quando cor?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Tem tamanho M? означает…",
+      "kind": "choice",
+      "options": [
+        "Есть размер M?",
+        "Сколько времени?",
+        "Где рынок?"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Quanto ___? (Сколько стоит?)",
+      "kind": "short",
+      "answers": [
+        "custa"
+      ]
+    }
+  ],
+  "onde": [
+    {
+      "index": 3,
+      "title": "Ты ищешь аптеку. Что спросить?",
+      "kind": "choice",
+      "options": [
+        "Onde fica a farmácia?",
+        "Quanto custa a farmácia?",
+        "Eu sou a farmácia."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "À esquerda — это…",
+      "kind": "choice",
+      "options": [
+        "Направо",
+        "Прямо сейчас",
+        "Налево"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 5,
+      "title": "Напиши «где» по-португальски.",
+      "kind": "short",
+      "answers": [
+        "onde"
+      ]
+    }
+  ],
+  "poder": [
+    {
+      "index": 3,
+      "title": "Что сказать, если не понял?",
+      "kind": "choice",
+      "options": [
+        "Pode repetir, por favor?",
+        "Eu repeti ontem.",
+        "Nunca ajuda."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Выбери правильную модель.",
+      "kind": "choice",
+      "options": [
+        "Preciso de ajuda.",
+        "Preciso ajuda de.",
+        "Sou preciso ajuda."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Pode ___ mais devagar? (говорить)",
+      "kind": "short",
+      "answers": [
+        "falar"
+      ]
+    }
+  ],
+  "saude": [
+    {
+      "index": 3,
+      "title": "Как сказать о боли в голове?",
+      "kind": "choice",
+      "options": [
+        "Estou com dor de cabeça.",
+        "Sou uma cabeça.",
+        "Tenho ontem cabeça."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Marcar uma consulta — это…",
+      "kind": "choice",
+      "options": [
+        "записаться на приём",
+        "купить билет",
+        "поговорить о погоде"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Estou ___ dor de cabeça.",
+      "kind": "short",
+      "answers": [
+        "com"
+      ]
+    }
+  ],
+  "telefone": [
+    {
+      "index": 3,
+      "title": "Зачем здесь me: pode me mandar?",
+      "kind": "choice",
+      "options": [
+        "Обозначает получателя: мне",
+        "Означает завтра",
+        "Делает слово множественным"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Combinado! в переписке — это…",
+      "kind": "choice",
+      "options": [
+        "Договорились!",
+        "Я потерялся!",
+        "До вчера!"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Напиши по-португальски «Договорились!».",
+      "kind": "short",
+      "answers": [
+        "combinado"
+      ]
+    }
+  ],
+  "amanha": [
+    {
+      "index": 3,
+      "title": "После vou в плане ставим…",
+      "kind": "choice",
+      "options": [
+        "форму estudo",
+        "местоимение eu ещё раз",
+        "начальную форму: estudar"
+      ],
+      "correct": 2
+    },
+    {
+      "index": 4,
+      "title": "Amanhã означает…",
+      "kind": "choice",
+      "options": [
+        "Никогда",
+        "Завтра",
+        "Вчера"
+      ],
+      "correct": 1
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Amanhã eu vou ___. (учиться)",
+      "kind": "short",
+      "answers": [
+        "estudar"
+      ]
+    }
+  ],
+  "ontem": [
+    {
+      "index": 3,
+      "title": "Как сказать «Вчера я занимался»?",
+      "kind": "choice",
+      "options": [
+        "Amanhã eu estudo.",
+        "Ontem eu estudei.",
+        "Ontem eu vou estudar."
+      ],
+      "correct": 1
+    },
+    {
+      "index": 4,
+      "title": "Fui в Eu fui ao mercado — это…",
+      "kind": "choice",
+      "options": [
+        "Ходил / ездил",
+        "Собираюсь идти",
+        "Хожу каждый день"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Заполни: Ontem eu ___ português. (estudar)",
+      "kind": "short",
+      "answers": [
+        "estudei"
+      ]
+    }
+  ],
+  "passado": [
+    {
+      "index": 3,
+      "title": "Выбери «Я вчера работал».",
+      "kind": "choice",
+      "options": [
+        "Ontem eu trabalhei.",
+        "Ontem eu trabalho amanhã.",
+        "Ontem trabalhar eu."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Eu fiz o jantar означает…",
+      "kind": "choice",
+      "options": [
+        "Я приготовил ужин",
+        "Я приготовлю завтра",
+        "Я всегда голоден"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Ontem eu ___ (работал).",
+      "kind": "short",
+      "answers": [
+        "trabalhei"
+      ]
+    }
+  ],
+  "imperfeito": [
+    {
+      "index": 3,
+      "title": "Выбери фон: «Когда я был ребёнком…»",
+      "kind": "choice",
+      "options": [
+        "Quando eu era criança…",
+        "Quando eu fui amanhã…",
+        "Quando eu sou ontem…"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Chegou в истории с дождём — это…",
+      "kind": "choice",
+      "options": [
+        "событие на фоне дождя",
+        "ежедневная привычка",
+        "будущий план"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Antes eu ___ em Moscou. (жил, morava)",
+      "kind": "short",
+      "answers": [
+        "morava"
+      ]
+    }
+  ],
+  "comparar": [
+    {
+      "index": 3,
+      "title": "Выбери «лучше».",
+      "kind": "choice",
+      "options": [
+        "melhor",
+        "mais bom",
+        "muito ontem"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Mais barato que означает…",
+      "kind": "choice",
+      "options": [
+        "дешевле, чем",
+        "такой же большой",
+        "очень далеко"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: mais barato ___ o táxi.",
+      "kind": "short",
+      "answers": [
+        "que",
+        "do que"
+      ]
+    }
+  ],
+  "condicional": [
+    {
+      "index": 3,
+      "title": "Выбери мягкую просьбу.",
+      "kind": "choice",
+      "options": [
+        "Você poderia me ajudar?",
+        "Você ajudou ontem.",
+        "Você ajuda nunca."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "После gostaria обычно ставится…",
+      "kind": "choice",
+      "options": [
+        "de",
+        "em",
+        "com ontem"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Eu gostaria ___ um café.",
+      "kind": "short",
+      "answers": [
+        "de"
+      ]
+    }
+  ],
+  "conectores": [
+    {
+      "index": 3,
+      "title": "Por isso связывает…",
+      "kind": "choice",
+      "options": [
+        "причину с результатом",
+        "имя с возрастом",
+        "время с числом"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Выбери «но».",
+      "kind": "choice",
+      "options": [
+        "mas",
+        "porque",
+        "amanhã"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Não fui ___ estava cansado. (потому что)",
+      "kind": "short",
+      "answers": [
+        "porque"
+      ]
+    }
+  ],
+  "opiniao": [
+    {
+      "index": 3,
+      "title": "Что добавляет потому что к мнению?",
+      "kind": "choice",
+      "options": [
+        "аргумент",
+        "только время",
+        "имя собеседника"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Acho que означает…",
+      "kind": "choice",
+      "options": [
+        "Я думаю, что",
+        "Я точно был вчера",
+        "Пожалуйста, повтори"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Na minha ___ (по моему мнению).",
+      "kind": "short",
+      "answers": [
+        "opiniao"
+      ]
+    }
+  ],
+  "subjuntivo": [
+    {
+      "index": 3,
+      "title": "Выбери возможное будущее.",
+      "kind": "choice",
+      "options": [
+        "Se eu tiver tempo, vou estudar.",
+        "Se eu tenho ontem, fui.",
+        "Se eu sou tempo, estudar."
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Quando eu chegar относится…",
+      "kind": "choice",
+      "options": [
+        "к будущему прибытию",
+        "к имени",
+        "к вчерашней покупке"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Se eu ___ tempo amanhã… (ter)",
+      "kind": "short",
+      "answers": [
+        "tiver"
+      ]
+    }
+  ],
+  "email": [
+    {
+      "index": 3,
+      "title": "Что обязательно для письма с просьбой?",
+      "kind": "choice",
+      "options": [
+        "Понятная просьба и нужные подробности",
+        "Только длинное приветствие",
+        "Список всех знакомых слов"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Remarcar a aula — это…",
+      "kind": "choice",
+      "options": [
+        "перенести занятие",
+        "начать обед",
+        "оплатить такси"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Obrigado ___ atenção.",
+      "kind": "short",
+      "answers": [
+        "pela"
+      ]
+    }
+  ],
+  "resumo": [
+    {
+      "index": 3,
+      "title": "«A biblioteca fecha às seis hoje.» Что обязательно сохранить?",
+      "kind": "choice",
+      "options": [
+        "Библиотека сегодня закрывается в 18:00",
+        "Библиотека закрыта навсегда",
+        "Книги сегодня бесплатные"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "Зачем учитывать адресата пересказа?",
+      "kind": "choice",
+      "options": [
+        "Чтобы выбрать нужные ему сведения",
+        "Чтобы добавить выдуманную историю",
+        "Чтобы скрыть время"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: O atendimento volta ___. (завтра)",
+      "kind": "short",
+      "answers": [
+        "amanha"
+      ]
+    }
+  ],
+  "conversa": [
+    {
+      "index": 3,
+      "title": "Что сделать, если смысл неясен?",
+      "kind": "choice",
+      "options": [
+        "Попросить уточнить и проверить понимание",
+        "Автоматически согласиться",
+        "Сразу сменить язык наугад"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 4,
+      "title": "De outro jeito означает…",
+      "kind": "choice",
+      "options": [
+        "по-другому",
+        "вчера",
+        "без человека"
+      ],
+      "correct": 0
+    },
+    {
+      "index": 5,
+      "title": "Вставь: Pode explicar de outro ___?",
+      "kind": "short",
+      "answers": [
+        "jeito"
+      ]
+    }
+  ]
+}
