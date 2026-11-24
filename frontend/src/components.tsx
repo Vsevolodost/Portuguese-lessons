@@ -36,7 +36,20 @@ export function Listen({
     utterance = useRef<SpeechSynthesisUtterance | null>(null);
   useEffect(() => {
     if (typeof speechSynthesis !== "undefined") speechSynthesis.getVoices();
+    const stop = () => {
+      request.current?.abort();
+      ref.current?.pause();
+      if (utterance.current) {
+        utterance.current.onend = null;
+        utterance.current.onerror = null;
+        speechSynthesis.cancel();
+        utterance.current = null;
+      }
+      setStatus("idle");
+    };
+    window.addEventListener("bora:stop-audio", stop);
     return () => {
+      window.removeEventListener("bora:stop-audio", stop);
       request.current?.abort();
       if (utterance.current) {
         utterance.current.onend = null;

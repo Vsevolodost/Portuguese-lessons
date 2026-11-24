@@ -1,3 +1,8 @@
+import {
+  createDictation,
+  useKeyboardDictation,
+  type DictationState,
+} from "./dictation";
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Mic, Square, Send, ArrowLeft } from "lucide-react";
@@ -13,18 +18,40 @@ export function Conversation() {
     [draft, setDraft] = useState(user?.v2?.conversations[id]?.draft || ""),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
-    [listening, setListening] = useState(false),
-    recognizer = useRef<any>(null),
+    [micState, setMicState] = useState<DictationState>("idle"),
+    [keyboardHelp, setKeyboardHelp] = useState(false),
+    mic = useRef<ReturnType<typeof createDictation> | null>(null),
+    input = useRef<HTMLTextAreaElement | null>(null),
+    requestTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined),
     abort = useRef<AbortController | null>(null),
     active = useRef(true),
-    end = useRef<HTMLDivElement>(null);
+    end = useRef<HTMLDivElement>(null),
+    viewport = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const v = window.visualViewport;
+    if (!v) return;
+    const fit = () => {
+      if (viewport.current) viewport.current.style.height = v.height + "px";
+    };
+    fit();
+    v.addEventListener("resize", fit);
+    return () => v.removeEventListener("resize", fit);
+  }, []);
+  useEffect(() => {
+    const hide = () => {
+      if (document.hidden) mic.current?.cancel();
+    };
+    document.addEventListener("visibilitychange", hide);
+    return () => document.removeEventListener("visibilitychange", hide);
+  }, []);
   const saved = user?.v2?.conversations[id],
     messages = saved?.messages || [];
   useEffect(() => {
     active.current = true;
     return () => {
       active.current = false;
-      recognizer.current?.abort();
+      mic.current?.dispose();
+      clearTimeout(requestTimer.current);
       abort.current?.abort();
     };
   }, []);
@@ -32,53 +59,80 @@ export function Conversation() {
     end.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }, [messages.length]);
   if (!lesson || !user) return <p>Выбери занятие для разговора.</p>;
+  const listening = micState !== "idle";
+  function rememberDraft(text: string) {
+    const bounded = text.slice(0, 1500);
+    setDraft(bounded);
+    update((u) => {
+      const c = (state(u).conversations[id] ??= {
+        draft: "",
+        turns: 0,
+        messages: [],
+      });
+      c.draft = bounded;
+    });
+  }
   function startMic() {
     if (listening) {
-      recognizer.current?.stop();
+      mic.current?.stop();
       return;
     }
-    const Constructor =
-      (window as any).SpeechRecognition ||
-      (window as any).webkitSpeechRecognition;
-    if (!Constructor) {
-      setError("На этом устройстве диктовка недоступна. Можно написать ответ.");
-      return;
-    }
-    const r = new Constructor();
-    recognizer.current = r;
-    r.lang = "pt-BR";
-    r.interimResults = false;
-    r.continuous = false;
-    r.onresult = (event: any) => {
-      if (active.current)
-        setDraft((d) => (d + " " + event.results[0][0].transcript).trim());
-    };
-    r.onend = () => {
-      if (active.current) setListening(false);
-    };
-    r.onerror = () => {
-      if (active.current) {
-        setListening(false);
-        setError("Не удалось услышать. Попробуй ещё раз или напиши ответ.");
-      }
-    };
     setError("");
-    setListening(true);
-    try {
-      r.start();
-    } catch {
-      setListening(false);
-      setError("Не удалось включить микрофон. Можно написать ответ.");
+    window.dispatchEvent(new Event("bora:stop-audio"));
+    if (typeof speechSynthesis !== "undefined") speechSynthesis.cancel();
+    if (
+      useKeyboardDictation(
+        navigator.userAgent,
+        navigator.platform,
+        navigator.maxTouchPoints,
+      )
+    ) {
+      setKeyboardHelp(true);
+      input.current?.focus();
+      return;
     }
+    const prefix = draft.trim();
+    mic.current?.dispose();
+    mic.current = createDictation({
+      Recognition:
+        (window as any).SpeechRecognition ||
+        (window as any).webkitSpeechRecognition,
+      onState: (s) => {
+        if (active.current) setMicState(s);
+      },
+      onText: (t) => {
+        if (active.current) rememberDraft((prefix + " " + t).trim());
+      },
+      onError: (e) => {
+        if (active.current) setError(e);
+      },
+    });
+    mic.current.start();
+  }
+  function cancelSend() {
+    abort.current?.abort();
+    clearTimeout(requestTimer.current);
+    setBusy(false);
+    setError("Запрос отменён. Текст ответа сохранён.");
   }
   async function send() {
     if (!draft.trim() || busy) return;
     const text = draft.trim();
     setBusy(true);
     setError("");
-    recognizer.current?.stop();
+    mic.current?.cancel();
     const controller = new AbortController();
     abort.current = controller;
+    const deadline = setTimeout(() => {
+      controller.abort();
+      if (active.current && abort.current === controller) {
+        setBusy(false);
+        setError(
+          "Ответ задерживается. Твой текст сохранён; попробуй отправить позже.",
+        );
+      }
+    }, 45000);
+    requestTimer.current = deadline;
     try {
       const result = await request<any>("/api/chat", {
         method: "POST",
@@ -93,7 +147,7 @@ export function Conversation() {
             .map((m) => ({ role: m.role, content: m.content })),
         },
       });
-      if (!active.current) return;
+      if (!active.current || controller.signal.aborted) return;
       const p = result.practice;
       if (!p?.say)
         throw Error("Не удалось продолжить разговор. Попробуй ещё раз.");
@@ -130,11 +184,12 @@ export function Conversation() {
           e instanceof Error ? e.message : "Не удалось отправить ответ.",
         );
     } finally {
-      if (active.current) setBusy(false);
+      clearTimeout(deadline);
+      if (abort.current === controller && active.current) setBusy(false);
     }
   }
   return (
-    <div className="conversation-page">
+    <div className="conversation-page" ref={viewport}>
       <header className="conversation-header">
         <Link className="text-link" to={"/lesson/" + id}>
           <ArrowLeft />К занятию
@@ -161,7 +216,7 @@ export function Conversation() {
                 <button
                   className="word-chip"
                   key={e[0]}
-                  onClick={() => setDraft(e[0])}
+                  onClick={() => rememberDraft(e[0])}
                 >
                   {e[0]}
                 </button>
@@ -180,7 +235,14 @@ export function Conversation() {
             {m.say && <Listen text={m.say} />}
           </article>
         ))}
-        {busy && <p role="status">Bora отвечает…</p>}
+        {busy && (
+          <div role="status">
+            <p>Bora отвечает…</p>
+            <button type="button" className="text-link" onClick={cancelSend}>
+              Отменить ожидание
+            </button>
+          </div>
+        )}
         <div ref={end} />
       </div>
       <form
@@ -193,6 +255,8 @@ export function Conversation() {
         <label htmlFor="conversation-answer">Твой ответ</label>
         <textarea
           id="conversation-answer"
+          ref={input}
+          readOnly={listening}
           value={draft}
           onChange={(e) => {
             setDraft(e.target.value);
@@ -214,19 +278,40 @@ export function Conversation() {
               "button button-secondary " + (listening ? "recording" : "")
             }
             type="button"
+            disabled={busy}
             onClick={startMic}
           >
             {listening ? <Square /> : <Mic />}
-            {listening ? "Остановить" : "Сказать"}
+            {micState === "starting"
+              ? "Отменить"
+              : micState === "stopping"
+                ? "Завершаю…"
+                : listening
+                  ? "Остановить"
+                  : "Сказать"}
           </button>
-          <button className="button" disabled={busy || !draft.trim()}>
+          <button
+            className="button"
+            disabled={busy || listening || !draft.trim()}
+          >
             <Send />
             Отправить
           </button>
         </div>
+        {keyboardHelp && (
+          <p role="status">
+            На iPhone используй микрофон на экранной клавиатуре. Для
+            португальской речи выбери португальскую клавиатуру. Затем проверь
+            текст и нажми «Отправить».
+          </p>
+        )}
         {listening && (
           <p role="status">
-            Слушаю. После диктовки проверь текст и нажми «Отправить».
+            {micState === "starting"
+              ? "Разреши доступ к микрофону. Запуск можно отменить."
+              : micState === "stopping"
+                ? "Завершаю диктовку…"
+                : "Слушаю до 20 секунд. Затем проверь текст и нажми «Отправить»."}
           </p>
         )}
         {error && (
