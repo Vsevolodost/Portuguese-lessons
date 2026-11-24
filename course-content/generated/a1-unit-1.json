@@ -1,0 +1,275 @@
+{
+  "titleRu": "Приветствия и знакомство",
+  "overview": "Первый модуль A1: приветствия, представление, возраст, происхождение и базовые вопросы. Вы научитесь использовать ser для идентичности и происхождения, ter для возраста, estar для состояния и местоположения, а также артикли o/a/os/as с согласованием рода. Освоите алфавит, числа 0–100, простые предметы в классе, правила чтения (vogais nasais, nh, lh) и орфографию. В диалогах — от неформального tchau до формального o senhor/a senhora.",
+  "goals": [
+    "Представляться с ser (имя, национальность, профессия), называть возраст с ter и описывать состояние/местоположение с estar.",
+    "Кумплимироваться и прощаться в подходящем регистре (olá, bom dia, tchau, até logo, adeus), задавать вопросы quem, como, de onde.",
+    "Правильно использовать артикли o/a/os/as и согласовывать род; читать и писать простые слова с носовыми гласными и диграфами nh/lh."
+  ],
+  "prerequisites": [
+    "Знание кириллицы и латиницы на уровне распознавания букв.",
+    "Готовность повторять вслух и выполнять фонетические упражнения (vogais nasais, nh, lh)."
+  ],
+  "words": [
+    {
+      "pt": "olá",
+      "ru": "привет",
+      "example": "Olá, tudo bem?",
+      "translation": "Привет, как дела?"
+    },
+    {
+      "pt": "bom dia",
+      "ru": "доброе утро",
+      "example": "Bom dia, professora.",
+      "translation": "Доброе утро, учительница."
+    },
+    {
+      "pt": "boa tarde",
+      "ru": "добрый день",
+      "example": "Boa tarde, senhor.",
+      "translation": "Добрый день, господин."
+    },
+    {
+      "pt": "boa noite",
+      "ru": "добрый вечер/спокойной ночи",
+      "example": "Boa noite, estou cansado.",
+      "translation": "Добрый вечер, я устал."
+    },
+    {
+      "pt": "tchau",
+      "ru": "пока (неформально)",
+      "example": "Tchau, até logo!",
+      "translation": "Пока, до скорого!"
+    },
+    {
+      "pt": "adeus",
+      "ru": "прощай",
+      "example": "Adeus, volto amanhã.",
+      "translation": "Прощай, вернусь завтра."
+    },
+    {
+      "pt": "até logo",
+      "ru": "до скорого",
+      "example": "Até logo, fica bem.",
+      "translation": "До скорого, будь в порядке."
+    },
+    {
+      "pt": "por favor",
+      "ru": "пожалуйста",
+      "example": "Repita, por favor.",
+      "translation": "Повторите, пожалуйста."
+    }
+  ],
+  "rules": [
+    {
+      "title": "Ser: identidade, origem, profissão",
+      "explanation": "Глагол ser используется для обозначения того, кем человек является по сути: имя, национальность, профессия, устойчивые качества. В настоящем времени для você/ele/ela форма é; для nós somos; для vocês/eles/elas são. Местоимение você требует формы 3-го лица. Примеры: Eu sou Ana. Você é brasileiro? Ela é professora. Nós somos estudantes. Важно: ser не меняется по ситуации, он фиксирует идентичность. С ним не описывают временное состояние или точное местоположение.",
+      "examples": [
+        {
+          "pt": "Eu sou médico. Ela é de Portugal.",
+          "ru": "Я врач. Она из Португалии."
+        },
+        {
+          "pt": "Nós somos amigos. Você é estudante?",
+          "ru": "Мы друзья. Вы студент?"
+        }
+      ]
+    },
+    {
+      "title": "Estar: estado e localização",
+      "explanation": "Глагол estar описывает состояние (bem, mal, cansado) и местоположение (em casa, no Brasil). Формы: eu estou; você/ele/ela está; nós estamos; vocês/eles/elas estão. Estar подходит для меняющихся состояний и для указания, где кто-то или что-то находится сейчас. Сравните: Sou de Recife (origem, ser) и Estou em Recife (localização, estar). Também: Ele está cansado (состояние), A aula está na sala 3 (местоположение).",
+      "examples": [
+        {
+          "pt": "Eu estou em casa. Você está bem?",
+          "ru": "Я дома. Вы в порядке?"
+        },
+        {
+          "pt": "Nós estamos cansados. A festa está aqui.",
+          "ru": "Мы устали. Вечеринка здесь."
+        }
+      ]
+    },
+    {
+      "title": "Ter: idade e posse; artigos o/a/os/as",
+      "explanation": "Для возраста в португальском используют ter: Eu tenho 28 anos. Формы: eu tenho; você/ele/ela tem; nós temos; vocês/eles/elas têm. Обратите внимание: tem/têm без «n» в написании, но с носовым звучанием. Артикли o/a/os/as согласуются с родом и числом существительного: o livro (м.р., ед.ч.), a casa (ж.р., ед.ч.), os alunos (м.р., мн.ч.), as aulas (ж.р., мн.ч.). Используйте артикль, когда говорите о конкретном или известном предмете: O professor está aqui. A lição é fácil.",
+      "examples": [
+        {
+          "pt": "Eu tenho 20 anos. Ela tem 30 anos.",
+          "ru": "Мне 20 лет. Ей 30 лет."
+        },
+        {
+          "pt": "O caderno está na mesa. As chaves estão aqui.",
+          "ru": "Тетрадь на столе. Ключи здесь."
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "speaker": "Ana",
+      "pt": "Bom dia. Eu sou Ana. Como você se chama?",
+      "ru": "Доброе утро. Я Ана. Как вас зовут?"
+    },
+    {
+      "speaker": "Bruno",
+      "pt": "Bom dia, Ana. Eu me chamo Bruno. Prazer.",
+      "ru": "Доброе утро, Ана. Меня зовут Бруно. Приятно познакомиться."
+    },
+    {
+      "speaker": "Ana",
+      "pt": "Prazer. De onde você é?",
+      "ru": "Приятно познакомиться. Вы откуда?"
+    },
+    {
+      "speaker": "Bruno",
+      "pt": "Eu sou de Curitiba. E você?",
+      "ru": "Я из Куритибы. А вы?"
+    },
+    {
+      "speaker": "Ana",
+      "pt": "Eu sou de Recife. Tenho 28 anos. E você?",
+      "ru": "Я из Ресифи. Мне 28 лет. А вам?"
+    },
+    {
+      "speaker": "Bruno",
+      "pt": "Eu tenho 25 anos. Estou bem, obrigado.",
+      "ru": "Мне 25 лет. Я в порядке, спасибо."
+    }
+  ],
+  "reading": {
+    "title": "Primeiro dia de aula",
+    "pt": "Hoje é o primeiro dia de aula. Eu me chamo Ana. Sou estudante e sou de Recife. O professor se chama Paulo. Ele é de São Paulo. Nós estamos na sala 2. A aula é às nove horas. Eu tenho 28 anos. Meu caderno está na mesa. A professora de português está aqui. Ela está muito bem.",
+    "ru": "Сегодня первый день занятий. Меня зовут Ана. Я студентка и я из Ресифи. Преподавателя зовут Паулу. Он из Сан-Паулу. Мы в аудитории 2. Занятие в девять часов. Мне 28 лет. Моя тетрадь на столе. Преподавательница португальского здесь. Она в полном порядке."
+  },
+  "checks": [
+    {
+      "id": "c1",
+      "kind": "choice",
+      "prompt": "Как правильно сказать «Мне 28 лет»?",
+      "options": [
+        "Eu tenho 28 anos.",
+        "Eu sou 28 anos.",
+        "Eu estou 28 anos."
+      ],
+      "answer": 0,
+      "explanation": "Возраст выражается глаголом ter: eu tenho 28 anos. Ser и estar для возраста не используются.",
+      "skill": "grammar"
+    },
+    {
+      "id": "c2",
+      "kind": "choice",
+      "prompt": "Выберите правильную форму для «Я дома» (местоположение).",
+      "options": [
+        "Eu estou em casa.",
+        "Eu sou em casa.",
+        "Eu tenho em casa."
+      ],
+      "answer": 0,
+      "explanation": "Местоположение передаётся estar: eu estou em casa. Ser не используется для текущего местоположения.",
+      "skill": "grammar"
+    },
+    {
+      "id": "c3",
+      "kind": "choice",
+      "prompt": "Как поздороваться утром в вежливой форме?",
+      "options": [
+        "Bom dia.",
+        "Boa noite.",
+        "Tchau."
+      ],
+      "answer": 0,
+      "explanation": "Утром говорят bom dia. Boa noite — вечером/перед сном, tchau — прощание.",
+      "skill": "vocabulary"
+    },
+    {
+      "id": "c4",
+      "kind": "choice",
+      "prompt": "Как правильно: «Тетрадь на столе» с артиклями?",
+      "options": [
+        "O caderno está na mesa.",
+        "Uma caderno está na mesa.",
+        "Caderno está na mesa."
+      ],
+      "answer": 0,
+      "explanation": "Существительное caderno мужского рода, определённый артикль — o: O caderno está na mesa.",
+      "skill": "vocabulary"
+    },
+    {
+      "id": "c5",
+      "kind": "choice",
+      "prompt": "Послушайте диалог. Как зовут преподавателя? O professor se chama ____.",
+      "options": [
+        "Paulo",
+        "Bruno",
+        "Ana"
+      ],
+      "answer": 0,
+      "explanation": "В тексте чтения сказано: O professor se chama Paulo.",
+      "skill": "listening"
+    },
+    {
+      "id": "c6",
+      "kind": "choice",
+      "prompt": "Послушайте диалог. Где проходит aula?",
+      "options": [
+        "na sala 2",
+        "na casa",
+        "no parque"
+      ],
+      "answer": 0,
+      "explanation": "В тексте: Nós estamos na sala 2.",
+      "skill": "listening"
+    },
+    {
+      "id": "c7",
+      "kind": "choice",
+      "prompt": "Как спросить «Как вас зовут?» вежливо?",
+      "options": [
+        "Como você se chama?",
+        "Como está você?",
+        "De onde você é?"
+      ],
+      "answer": 0,
+      "explanation": "Для имени используют Como você se chama?.",
+      "skill": "reading"
+    },
+    {
+      "id": "c8",
+      "kind": "choice",
+      "prompt": "Как спросить «Вы откуда?»?",
+      "options": [
+        "De onde você é?",
+        "Como você está?",
+        "Que horas são?"
+      ],
+      "answer": 0,
+      "explanation": "Происхождение спрашивают De onde você é?.",
+      "skill": "reading"
+    }
+  ],
+  "writing": {
+    "prompt": "Напишите 4–5 предложений о себе: имя, национальность, город, возраст, где вы сейчас и как вы себя чувствуете.",
+    "model": "Eu sou ___. Sou ___ (nacionalidade). Sou de ___. Tenho ___ anos. Estou em ___. Estou ___ (bem/mal/cansado).",
+    "translation": "Я — ___. Я — ___ (национальность). Я из ___. Мне ___ лет. Я в ___. Я чувствую себя ___.",
+    "checklist": [
+      "Использованы ser для имени/национальности, ter для возраста, estar для состояния/места.",
+      "Согласованы артикли и род, если упоминаются предметы (o/a).",
+      "Орфография: tem/têm, nh/lh, носовые гласные — без лишних «n»."
+    ]
+  },
+  "scenario": {
+    "title": "Регистрация на занятии",
+    "role": "Студент",
+    "goal": "Назвать имя, национальность, возраст и город; узнать имя преподавателя и аудиторию.",
+    "opening": "Bom dia. Sou ___ (nome), sou ___ (nacionalidade), tenho ___ anos e sou de ___.",
+    "openingRu": "Доброе утро. Я ___ (имя), я ___ (национальность), мне ___ лет и я из ___.",
+    "help": "Eu me chamo ___. Sou ___. Tenho ___ anos. Sou de ___. Estou em ___. E o senhor/a senhora, como se chama?",
+    "helpRu": "Меня зовут ___. Я ___. Мне ___ лет. Я из ___. Я в ___. А как вас зовут? (вежливо)"
+  },
+  "id": "a1-unit-1",
+  "level": "A1",
+  "sourceUnit": "a1-unit-1",
+  "version": 1,
+  "reviewStatus": "draft",
+  "generatedAt": "2026-11-24T15:45:16.490Z"
+}

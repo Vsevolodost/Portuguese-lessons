@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "node check.cjs",
+  "buildCommand": "node check.cjs && npm ci --prefix frontend && node scripts/build-course-frontend.cjs && npm run build --prefix frontend && node scripts/package-frontend.cjs",
   "outputDirectory": "dist",
   "regions": [
     "dub1"
@@ -9,7 +9,7 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 240,
-      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json,dist/courses-data.js,dist/exam-data.js}"
+      "includeFiles": "{knowledge/chunks.jsonl,certs/russian-trusted-root.pem,supabase-public.json,dist/courses-data.js,course-content/lessons.json,dist/exam-data.js}"
     },
     "api/knowledge.js": {
       "includeFiles": "knowledge/chunks.jsonl"
@@ -27,7 +27,7 @@
     },
     "api/live-session.js": {
       "maxDuration": 60,
-      "includeFiles": "{supabase-public.json,dist/courses-data.js,knowledge/chunks.jsonl}"
+      "includeFiles": "{supabase-public.json,dist/courses-data.js,course-content/lessons.json,knowledge/chunks.jsonl}"
     },
     "api/exam-feedback.js": {
       "maxDuration": 120,
@@ -62,6 +62,14 @@
     {
       "source": "/api/v1/progress",
       "destination": "/api/progress"
+    },
+    {
+      "source": "/learn",
+      "destination": "/learn/index.html"
+    },
+    {
+      "source": "/learn/:path*",
+      "destination": "/learn/index.html"
     }
   ],
   "headers": [

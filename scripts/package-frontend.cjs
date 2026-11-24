@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path');const from=path.resolve('outputs/bora-v2'),to=path.resolve('dist/learn');if(!fs.existsSync(path.join(from,'index.html')))throw Error('Build frontend first');fs.mkdirSync(to,{recursive:true});fs.cpSync(from,to,{recursive:true});console.log('Packaged learner UI into dist/learn');

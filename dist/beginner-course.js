@@ -104,6 +104,6 @@ for(const u of Object.values(byId)){
 previous.forEach((l,i)=>{l.difficulty=i<10?'easy':i<20?'medium':'hard';});
 course.modules=[{title:'С самого нуля',lessons:Object.keys(byId)},...course.modules.map(m=>({...m,lessons:m.lessons.filter(id=>!byId[id])})).filter(m=>m.lessons.length)];
 course.lessons=[...Object.values(byId).map(u=>u.lesson),...previous.filter(l=>!byId[l.id])];
-function complete(user,lesson){const r=user.courseProgress?.['pt/'+lesson.id];return byId[lesson.id]?r?.guided?.version===2&&!!r.guided.finishedAt:!!r?.done}
+function complete(user,lesson){if(user.v2?.lessons?.[lesson.id]?.completedAt)return true;const r=user.courseProgress?.['pt/'+lesson.id];return byId[lesson.id]?r?.guided?.version===2&&!!r.guided.finishedAt:!!r?.done}
 window.BoraBeginner={version:2,units:byId,complete};
 })();
