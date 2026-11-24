@@ -33,3 +33,7 @@
 Impeccable direction seed: seed:abf1ceaaade7ae41; внешние варианты недоступны, выбранное пользователем направление имеет приоритет. Из семи рассмотренных основ (туристические открытки, бразильская модернистская графика, географический атлас, транспортная схема, путевой дневник, посадочный талон, фотожурнал) атлас выбран как рабочая форма карты и учебных остановок. Декоративная имитация бумажных документов не используется.
 
 Sources: [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x), [state and SVG tutorial](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/), [Natural Earth data](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_admin_0_countries.geojson), [public-domain terms](https://www.naturalearthdata.com/about/terms-of-use/).
+
+## Short practice, 24 November 2026
+
+The existing atlas remains the visual authority. A single-task practice surface uses the same semantic surfaces, answer colours and focus styles. A visible exit is always available, matching requires no drag, and a translation/rule primer comes before recall. Progress belongs to the practice session, not an invented proficiency score. Source observations and implementation limits: docs/duolingo-rea.md.
