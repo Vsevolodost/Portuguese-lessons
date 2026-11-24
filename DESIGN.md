@@ -37,3 +37,9 @@ Sources: [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
 ## Short practice, 24 November 2026
 
 The existing atlas remains the visual authority. A single-task practice surface uses the same semantic surfaces, answer colours and focus styles. A visible exit is always available, matching requires no drag, and a translation/rule primer comes before recall. Progress belongs to the practice session, not an invented proficiency score. Source observations and implementation limits: docs/duolingo-rea.md.
+
+## Stable mobile classroom and explorable cities
+
+At up to 700px, lessons and short practice use one 100dvh classroom: a compact exit/header, independently scrollable material and a reserved bottom feedback/action dock. The main page and navigation do not scroll during answers. The Continue button keeps its position before and after feedback or skipping. Long material remains readable inside the content pane. Success save messages and audio provenance captions are absent from the study UI; errors stay actionable, and source/provenance data remains in materials and audio metadata.
+
+The atlas offers lesson and city modes. Twelve curated cities have photos, Portuguese names, concise geography/context and a related phrase/topic. Zoom is bounded to 100–300%; the enlarged map scrolls natively in two dimensions. A city list provides an alternative to map navigation. Exploration and scale are transient, independent of saved learning progress.

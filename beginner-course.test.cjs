@@ -65,8 +65,8 @@ test('Dictionary, previews and real progress handle 36 lessons and do not mark l
   const pool=w.BoraDictionary.pool(x.user);assert.ok(pool.some(word=>word.lessons.includes('repetir')));assert.ok(pool.filter(word=>word.lessons.includes('saudacoes')).every(word=>word.level==='easy'));
   assert.match(w.BoraKit.results(x.user),/из 36/);assert.equal(w.BoraLearning.summary(x.user)[0].done,0);assert.equal(w.BoraUI.filterLessons(w.BoraCourses[0].lessons,x.user.courseProgress,{status:'done'}).length,0);assert.equal(w.BoraStudy.next(x.user).id,'oi');
 });
-test('Audio distinguishes question and answer intonation, keeps native labels, and serves every taught phrase',()=>{
-  const w=setup().ctx.window;assert.notEqual(w.BoraAudioExact['tudo bem?'].id,w.BoraAudioExact['tudo bem.'].id);assert.equal(w.BoraAudioExact['bom dia!'].kind,'native');assert.match(w.BoraKit.audio('Oi!'),/Синтез речи/);
+test('Audio distinguishes question and answer intonation, preserves audio provenance without technical button captions, and serves every taught phrase',()=>{
+  const w=setup().ctx.window;assert.notEqual(w.BoraAudioExact['tudo bem?'].id,w.BoraAudioExact['tudo bem.'].id);assert.equal(w.BoraAudioExact['bom dia!'].kind,'native');assert.doesNotMatch(w.BoraKit.audio('Oi!'),/Синтез речи/);
   for(const u of Object.values(w.BoraBeginner.units))for(const [,pt]of u.dialogue.map(row=>[row[0],row[1]])){const a=w.BoraAudioExact[pt.toLocaleLowerCase('pt-BR')];assert.ok(a,pt);assert.ok(fs.statSync('dist'+a.src).size>1000);}
 });
 test('New scripts and exact listening audio are served by the application, including byte ranges',async()=>{
